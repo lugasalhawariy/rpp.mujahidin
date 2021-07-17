@@ -1,24 +1,36 @@
 <?php
 
+use App\Http\Livewire\Test\Index;
+use App\Http\Livewire\Rpp\EditRpp;
+// use App\Http\Livewire\Test\Create;
+use App\Http\Livewire\Rpp\IndexRpp;
+use App\Http\Livewire\Rpp\CreateRpp;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RppController;
+use App\Http\Livewire\Mapel\IndexMapel;
+use App\Http\Livewire\Sekolah\IndexSekolah;
+use App\Http\Livewire\Sekolah\CreateSekolah;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/', Index::class);
+
+Route::get('/sekolah', IndexSekolah::class)->name('index.sekolah');
+// Route::get('/tambah-sekolah', CreateSekolah::class)->name('create.sekolah');
+
+Route::get('/mapel', IndexMapel::class)->name('index.mapel')->middleware('auth');
+// Route::get('/create-rpp', CreateRpp::class)->name('create.rpp')->middleware('auth');
+
+
+Route::prefix('rpp')->group(function () {
+    Route::get('/', IndexRpp::class)->name('index.rpp');
+    Route::get('create', [RppController::class, 'create'])->name('create.rpp');
+    Route::post('store', [RppController::class, 'store'])->name('store.rpp');
+    Route::get('show/{id}', [RppController::class, 'show'])->name('show.rpp');
+    Route::get('edit/{id}', EditRpp::class)->name('edit.rpp');
+});

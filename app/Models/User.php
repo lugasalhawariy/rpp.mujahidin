@@ -40,4 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class);
+    }
+
+    public function rpp()
+    {
+        return $this->hasMany(RPP::class);
+    }
 }
