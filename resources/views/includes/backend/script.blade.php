@@ -1,9 +1,9 @@
-<script src="{{ secure_asset('backend/assets/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ secure_asset('backend/assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ secure_asset('backend/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<script src="{{ secure_asset('backend/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
-<script src="{{ secure_asset('backend/assets/vendor/chartist/js/chartist.min.js') }}"></script>
-<script src="{{ secure_asset('backend/assets/scripts/klorofil-common.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/chartist/js/chartist.min.js') }}"></script>
+<script src="{{ asset('backend/assets/scripts/klorofil-common.js') }}"></script>
 {{-- <script>
 $(function() {
     var data, options;
@@ -123,3 +123,4 @@ $(function() {
 });
 </script> --}}
 <!-- JavaScript Bundle with Popper -->
+<script src="{{ asset('backend/assets/vendor/ckeditor/ckeditor.js') }}"></script>

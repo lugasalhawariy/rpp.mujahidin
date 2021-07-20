@@ -101,35 +101,35 @@
                             <br>
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">A. Kompetensi Dasar</label>
-                                <textarea name="kompetensi_dasar" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea name="kompetensi_dasar" class="ckeditor form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 @error('kompetensi_dasar')
                                     {{ $message }}
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">B. IPK</label>
-                                <textarea name="ipk" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea name="ipk" class="ckeditor form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 @error('ipk')
                                     {{ $message }}
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">C. Tujuan</label>
-                                <textarea name="tujuan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea name="tujuan" class="ckeditor form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 @error('tujuan')
                                     {{ $message }}
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">D. Materi Pembelajaran</label>
-                                <textarea name="materi_rpp" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea name="materi_rpp" class="ckeditor form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 @error('materi_rpp')
                                     {{ $message }}
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="exampleFormControlTextarea1">E. Langkah RPP</label>
-                                <textarea name="langkah_rpp" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea name="langkah_rpp" class="ckeditor form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 @error('langkah_rpp')
                                     {{ $message }}
                                 @enderror

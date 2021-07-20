@@ -12,6 +12,11 @@ class EditRpp extends Component
     public $sekolah, $mapel, $nama_pemilik, $rpp_id;
     public $sekolah_id, $mapel_id, $alokasi_waktu, $pendekatan, $strategi, $metode_rpp, $teknik_materi, $teknik_penilaian, $alat, $bentuk, $kompetensi_dasar, $ipk, $tujuan, $materi_rpp, $langkah_rpp;
 
+    // protected $listeners = ['updateRpp' => 'refreshPage'];
+
+    // public function refreshPage()
+    // {}
+
     public function mount($id)
     {
         $data = RPP::findOrFail($id);
@@ -55,11 +60,6 @@ class EditRpp extends Component
             'teknik_penilaian' => 'min:3|max:255',
             'alat' => 'min:3|max:255',
             'bentuk' => 'min:3|max:255',
-            'kompetensi_dasar' => 'min:3',
-            'ipk' => 'min:3',
-            'tujuan' => 'min:3',
-            'materi_rpp' => 'min:3',
-            'langkah_rpp' => 'min:3'
         ]);
     }
 
@@ -70,6 +70,8 @@ class EditRpp extends Component
 
     public function update()
     {
+        dd([$this->kompetensi_dasar, $this->ipk, $this->tujuan, $this->materi_rpp, $this->langkah_rpp]);
+
         $this->validate([
             'mapel_id' => 'required|integer|exists:mapel,id',
             'sekolah_id' => 'required|integer|exists:sekolah,id',
@@ -81,13 +83,9 @@ class EditRpp extends Component
             'teknik_penilaian' => 'min:3|max:255',
             'alat' => 'min:3|max:255',
             'bentuk' => 'min:3|max:255',
-            'kompetensi_dasar' => 'min:3',
-            'ipk' => 'min:3',
-            'tujuan' => 'min:3',
-            'materi_rpp' => 'min:3',
-            'langkah_rpp' => 'min:3'
         ]);
 
+        
         $data = RPP::findOrFail($this->rpp_id);
 
         $data->update([
@@ -109,6 +107,5 @@ class EditRpp extends Component
         ]);
 
         session()->flash('message', 'Data RPP berhasil diperbarui.');
-        
     }
 }

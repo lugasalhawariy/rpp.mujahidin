@@ -34,12 +34,7 @@ class RppRequest extends FormRequest
             'teknik_materi' => 'required',
             'teknik_penilaian' => 'required',
             'alat' => 'required',
-            'bentuk' => 'required',
-            'kompetensi_dasar' => 'required',
-            'ipk' => 'required',
-            'tujuan' => 'required',
-            'materi_rpp' => 'required',
-            'langkah_rpp' => 'required'
+            'bentuk' => 'required'
         ];
     }
 }

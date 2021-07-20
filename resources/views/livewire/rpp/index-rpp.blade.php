@@ -82,7 +82,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('edit.rpp', $item->id) }}" class="btn btn-sm bg-warning">
+                                    <a href="{{ route('edit.rpp', $item->id) }}" class="btn btn-sm bg-info">
                                         EDIT
                                     </a>
                                 </td>

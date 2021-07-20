@@ -177,7 +177,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ $data->kompetensi_dasar }}
+                                {!! $data->kompetensi_dasar !!}
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ $data->ipk }}
+                                {!! $data->ipk !!}
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ $data->tujuan }}
+                                {!! $data->tujuan !!}
                             </div>
                         </div>
                     </div>
@@ -219,7 +219,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ $data->materi_rpp }}
+                                {!! $data->materi_rpp !!}
                             </div>
                         </div>
                     </div>
@@ -233,7 +233,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                {{ $data->langkah_rpp }}
+                                {!! $data->langkah_rpp !!}
                             </div>
                         </div>
                     </div>
