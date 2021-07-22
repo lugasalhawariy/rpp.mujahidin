@@ -133,10 +133,10 @@
                         <div class="form-check">
                             <select wire:model="akreditasi" id="inputState" class="form-control">
                                 <option selected>Choose...</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
+                                <option @if ($akreditasi == 'A') selected @endif value="A">A</option>
+                                <option @if ($akreditasi == 'B') selected @endif value="B">B</option>
+                                <option @if ($akreditasi == 'C') selected @endif value="C">C</option>
+                                <option @if ($akreditasi == 'D') selected @endif value="D">D</option>
                             </select>
                             @error('akreditasi')
                                 <small class="mt-2 text-danger">

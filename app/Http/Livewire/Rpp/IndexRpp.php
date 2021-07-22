@@ -22,7 +22,21 @@ class IndexRpp extends Component
     {
         $rpp = RPP::latest()->paginate(5);
         if($this->search !== null){
-            $rpp = RPP::where('status', 'like', '%'.$this->search.'%')->latest()->paginate(5);
+            // $rpp = RPP::where('status', 'like', '%'.$this->search.'%')->latest()->paginate(5);
+            $value = $this->search;
+            $rpp = RPP::with(['sekolah', 'mapel'])
+                        ->whereHas('sekolah', function($q) use($value){
+                            $q->where('nama_sekolah', 'like', '%'.$value.'%')
+                                ->orWhere('nss', '=', $value)
+                                ->orWhere('npsn', '=', $value)
+                                ->orWhere('nama_kepsek', 'like', '%'.$value.'%');
+                                
+                        })
+                        ->orWhereHas('mapel', function($q) use($value){
+                            $q->where('nama_mapel', 'like', '%'.$value.'%')
+                                ->orWhere('tahun', '=', $value);
+                        })
+                        ->latest()->paginate(5);
         }else{
             $rpp = RPP::latest()->paginate(5);
         }
@@ -35,7 +49,7 @@ class IndexRpp extends Component
     {
         if($id){
             RPP::where('id',$id)->delete();
-            session()->flash('delete', 'Data RPP berhasil dihapus.');
+            session()->flash('message', 'Data RPP berhasil dihapus.');
         }
     }
 }

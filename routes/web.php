@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
         Route::get('show/{id}', [RppController::class, 'show'])->name('show.rpp');
         Route::get('edit/{id}', [RppController::class, 'edit'])->name('edit.rpp');
         Route::put('update/{id}', [RppController::class, 'update'])->name('update.rpp');
+        Route::get('pdf/{id}', [RppController::class, 'cetak'])->name('pdf.rpp');
     });
     
 

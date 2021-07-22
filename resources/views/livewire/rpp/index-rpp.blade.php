@@ -47,6 +47,7 @@
                                 <th scope="col">Perbaharui</th>
                                 <th scope="col">DETAIL</th>
                                 <th scope="col">EDIT</th>
+                                <th scope="col">PDF</th>
                                 <th scope="col">HAPUS</th>
                             </tr>
                         </thead>
@@ -84,6 +85,11 @@
                                 <td>
                                     <a href="{{ route('edit.rpp', $item->id) }}" class="btn btn-sm bg-info">
                                         EDIT
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('pdf.rpp', $item->id) }}" class="btn btn-sm bg-danger">
+                                        DOWNLOAD PDF
                                     </a>
                                 </td>
                                 <td>
