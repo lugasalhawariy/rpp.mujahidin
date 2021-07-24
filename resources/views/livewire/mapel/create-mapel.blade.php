@@ -1,5 +1,5 @@
 <div>
-    <div class="panel">
+    <div class="panel animate__animated animate__headShake">
         <div class="panel-body">
             <form method="POST" action="#" wire:submit.prevent="addItem">
                 <div class="form-group row">

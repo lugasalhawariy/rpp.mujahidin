@@ -13,3 +13,4 @@
 <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
 <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('backend/assets/img/logo.png') }}">
 <!-- CSS only -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">

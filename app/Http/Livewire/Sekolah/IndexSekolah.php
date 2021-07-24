@@ -52,6 +52,7 @@ class IndexSekolah extends Component
         $this->nama_kepsek = $sekolah->nama_kepsek;
         $this->nbm = $sekolah->nbm;
         $this->akreditasi = $sekolah->akreditasi;
+        $this->status_sekolah = $sekolah->status_sekolah;
     }
 
     public function delete($id)

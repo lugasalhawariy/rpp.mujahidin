@@ -46,10 +46,10 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-10">
-                        <div class="form-check">
+                        <div class="form-check" wire:ignore>
                             <select wire:model="status_sekolah" id="inputState" class="form-control">
-                                <option @if ($status_sekolah === 'swasta') selected @endif value="swasta">Swasta</option>
-                                <option @if ($status_sekolah === 'negeri') selected @endif value="negeri">Negeri</option>
+                                <option @if ($status_sekolah == 'swasta') selected @endif value="swasta">Swasta</option>
+                                <option @if ($status_sekolah == 'negeri') selected @endif value="negeri">Negeri</option>
                             </select>
                             @error('status_sekolah')
                                 <small class="mt-2 text-danger">
@@ -130,9 +130,8 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Akreditasi</label>
                     <div class="col-sm-10">
-                        <div class="form-check">
+                        <div class="form-check" wire:ignore>
                             <select wire:model="akreditasi" id="inputState" class="form-control">
-                                <option selected>Choose...</option>
                                 <option @if ($akreditasi == 'A') selected @endif value="A">A</option>
                                 <option @if ($akreditasi == 'B') selected @endif value="B">B</option>
                                 <option @if ($akreditasi == 'C') selected @endif value="C">C</option>

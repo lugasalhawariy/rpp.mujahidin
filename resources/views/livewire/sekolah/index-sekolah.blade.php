@@ -9,7 +9,7 @@
                 {{-- tombol --}}
                 <div class="row">
                     @if ($show)
-                        <button wire:click="$set('show', false)" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-plus-circle"></i> Cancel</button>
+                        <button wire:click="$set('show', false)" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-circle-minus"></i> Cancel</button>
                     @else
                         <button wire:click="$set('show', true)" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-plus-circle"></i> Tambah Sekolah</button>
                     @endif
