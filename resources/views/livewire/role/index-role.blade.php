@@ -175,4 +175,4 @@
 </div>
 
 {{-- style tambahan --}}
-<link rel="stylesheet" href="{{ asset('backend/assets/css/style-guru.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('backend/assets/css/style-guru.css') }}">

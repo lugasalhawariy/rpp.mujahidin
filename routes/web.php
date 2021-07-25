@@ -16,10 +16,14 @@ use App\Http\Livewire\Sekolah\CreateSekolah;
 use App\Http\Controllers\AssignRolePermission;
 
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/laravel', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('/', function () {
+    return view('pages.home');
+});
 require __DIR__.'/auth.php';
 
 Route::middleware('auth', 'verified')->group(function () {

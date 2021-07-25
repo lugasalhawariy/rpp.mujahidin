@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/3c56d3d7-923b-45c4-9b5c-d0f2296a0a13/resourceGroups/laravel/providers/Microsoft.Web/sites/e-rppmuhammadiyah",
+    "appService.deploySubpath": "."
+}
