@@ -47,8 +47,8 @@
                         <div class="form-check">
                             <select wire:model="semester" id="inputState" class="form-control">
                                 <option selected>Choose...</option>
-                                <option value="genap">Semester Genap</option>
-                                <option value="ganjil">Semester Ganjil</option>
+                                <option value="I">Semester Genap</option>
+                                <option value="II">Semester Ganjil</option>
                             </select>
                             @error('semester')
                                 <small class="mt-2 text-danger">

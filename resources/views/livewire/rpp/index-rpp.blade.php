@@ -1,7 +1,7 @@
 <div>
     <div class="main-content">
         <div class="container-fluid">
-            @can('tambah data rpp')
+            @can('tambah-rpp')
                 {{-- panel/card for button --}}
                 <div class="panel panel-info">
                     <div class="panel-heading">
@@ -48,16 +48,16 @@
                                 <th scope="col">Pelajaran</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Perbaharui</th>
-                                @can('detail data rpp')
+                                @can('detail-rpp')
                                 <th scope="col">DETAIL</th>
                                 @endcan
-                                @can('ubah data rpp')
+                                @can('ubah-rpp')
                                 <th scope="col">EDIT</th>
                                 @endcan
-                                @can('cetak data rpp')
+                                @can('cetak-rpp')
                                 <th scope="col">PDF</th>
                                 @endcan
-                                @can('hapus data rpp')
+                                @can('hapus-rpp')
                                 <th scope="col">HAPUS</th>
                                 @endcan
                             </tr>
@@ -91,28 +91,28 @@
                                 <td>
                                     {{ $item->updated_at->diffForHumans() }}
                                 </td>
-                                @can('detail data rpp')
+                                @can('detail-rpp')
                                 <td>
                                     <a href="{{ route('show.rpp', $item->id) }}" class="btn btn-sm bg-warning">
                                         DETAIL
                                     </a>
                                 </td>
                                 @endcan
-                                @can('ubah data rpp')
+                                @can('ubah-rpp')
                                 <td>
                                     <a href="{{ route('edit.rpp', $item->id) }}" class="btn btn-sm bg-info">
                                         EDIT
                                     </a>
                                 </td>
                                 @endcan
-                                @can('cetak data rpp')
+                                @can('cetak-rpp')
                                 <td>
                                     <a href="{{ route('pdf.rpp', $item->id) }}" class="btn btn-sm bg-danger">
                                         DOWNLOAD PDF
                                     </a>
                                 </td>
                                 @endcan
-                                @can('hapus data rpp')
+                                @can('hapus-rpp')
                                 <td>
                                     <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
                                         <i class="lnr lnr-trash"></i>

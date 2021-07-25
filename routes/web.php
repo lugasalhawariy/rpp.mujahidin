@@ -29,37 +29,37 @@ require __DIR__.'/auth.php';
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/dashboard', Index::class);
     
-    Route::group(['middleware' => ['can:lihat data sekolah']], function () {
+    Route::group(['middleware' => ['can:lihat-sekolah']], function () {
         Route::get('/sekolah', IndexSekolah::class)->name('index.sekolah');
         // Route::get('/tambah-sekolah', CreateSekolah::class)->name('create.sekolah');
     });
 
-    Route::group(['middleware' => ['can:lihat data mapel']], function () {
+    Route::group(['middleware' => ['can:lihat-mapel']], function () {
         Route::get('/mapel', IndexMapel::class)->name('index.mapel');
         // Route::get('/create-rpp', CreateRpp::class)->name('create.rpp')->middleware('auth');
     });
 
     Route::prefix('rpp')->group(function () {
 
-        Route::group(['middleware' => ['permission:lihat data rpp']], function () {
+        Route::group(['middleware' => ['permission:lihat-rpp']], function () {
             Route::get('/', IndexRpp::class)->name('index.rpp');
         });
 
-        Route::group(['middleware' => ['permission:tambah data rpp']], function () {
+        Route::group(['middleware' => ['permission:tambah-rpp']], function () {
             Route::get('create', [RppController::class, 'create'])->name('create.rpp');
             Route::post('store', [RppController::class, 'store'])->name('store.rpp');
         });
         
-        Route::group(['middleware' => ['permission:detail data rpp']], function () {
+        Route::group(['middleware' => ['permission:detail-rpp']], function () {
             Route::get('show/{id}', [RppController::class, 'show'])->name('show.rpp');
         });
 
-        Route::group(['middleware' => ['permission:ubah data rpp']], function () {
+        Route::group(['middleware' => ['permission:ubah-rpp']], function () {
             Route::get('edit/{id}', [RppController::class, 'edit'])->name('edit.rpp');
             Route::put('update/{id}', [RppController::class, 'update'])->name('update.rpp');
         });
         
-        Route::group(['middleware' => ['permission:cetak data rpp']], function () {
+        Route::group(['middleware' => ['permission:cetak-rpp']], function () {
             Route::get('pdf/{id}', [RppController::class, 'cetak'])->name('pdf.rpp');
         });
     });
@@ -80,7 +80,7 @@ Route::middleware('auth', 'verified')->group(function () {
         }
     })->name('setsuperadmin');
 
-    Route::group(['middleware' => ['role_or_permission:superadmin|kelola user']], function () {
+    Route::group(['middleware' => ['role_or_permission:superadmin|kelola-user']], function () {
         Route::prefix('role-permission')->group(function(){
             Route::prefix('role')->group(function () {
                 Route::get('/', IndexRole::class)->name('index.role');

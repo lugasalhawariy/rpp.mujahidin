@@ -38,6 +38,7 @@ class IndexMapel extends Component
 
     public function edit($id)
     {
+        // Validasi Permission (commingsoon)
         $this->updateMode = true;
         $mapel = Mapel::where('id',$id)->first();
         $this->mapel_id = $id;
@@ -49,6 +50,8 @@ class IndexMapel extends Component
 
     public function delete($id)
     {
+        // Validasi Permission (commingsoon)
+
         if($id){
             Mapel::where('id',$id)->delete();
             session()->flash('message', 'Data mapel berhasil dihapus.');
@@ -57,6 +60,8 @@ class IndexMapel extends Component
 
     public function update()
     {
+        // Validasi Permission (commingsoon)
+
         // VALIDASI DATA
         $this->validate([
             'nama_mapel' => 'required|max:255',

@@ -29,7 +29,7 @@ class IndexRole extends Component
 
     public function render()
     {
-        // dapatkan user yang memiliki role admin (kondisi untuk superadmin)
+        // dapatkan user yang memiliki role guru (kondisi untuk admin)
         if(auth()->user()->hasRole('admin')){
             $users = User::role('guru')->paginate(5);
         }

@@ -55,8 +55,12 @@
                                 <th scope="col">Akreditasi</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">NBM</th>
+                                @can('ubah-sekolah')
                                 <th scope="col">UBAH</th>
+                                @endcan
+                                @can('hapus-sekolah')
                                 <th scope="col">HAPUS</th>
+                                @endcan
                             </tr>
                         </thead>
                         {{-- end thead table --}}
@@ -72,17 +76,21 @@
                                 <td>{{ $item->akreditasi }}</td>
                                 <td><span class="badge rounded-pill bg-secondary text-dark">{{ $item->status_sekolah }}</span></td>
                                 <td>{{ $item->nbm }}</td>
+                                @can('ubah-sekolah')
                                 <td><button wire:click="edit({{ $item->id }})" class="btn btn-sm bg-warning" data-toggle="modal" data-target="#editSekolah">UBAH</button></td>
                                 {{-- add modal edit --}}
                                 <div>
                                     @include('livewire.sekolah.modal-edit')
                                 </div>
+                                @endcan
 
+                                @can('hapus-sekolah')
                                 <td>
                                     <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
                                         <i class="lnr lnr-trash"></i>
                                     </button>
                                 </td>
+                                @endcan
                             </tr>
                             @endforeach
                         </tbody>

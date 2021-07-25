@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
         $user = User::get();
         if($request->email === "superadmin@gmail.com" && $user->count() == null){
             Artisan::call("permission:create-role superadmin");
-            Artisan::call("permission:create-permission kelola user");
+            Artisan::call("permission:create-permission kelola-user");
         }
         $request->validate([
             'name' => 'required|string|max:255',

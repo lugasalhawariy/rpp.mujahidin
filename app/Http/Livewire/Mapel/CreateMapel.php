@@ -30,6 +30,8 @@ class CreateMapel extends Component
     // event tambah data sekolah
     public function addItem()
     {
+        // Validasi Permission (commingsoon)
+        
         // VALIDASI DATA
         $this->validate([
             'nama_mapel' => 'required|max:255',
