@@ -130,3 +130,4 @@ $(function() {
         $('.select2').select2();
     });
 </script>
+<script src="https://kit.fontawesome.com/b45f82a167.js" crossorigin="anonymous"></script>
