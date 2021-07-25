@@ -1,6 +1,7 @@
 <!-- VENDOR CSS -->
 <link rel="stylesheet" href="{{ secure_asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ secure_asset('backend/assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+{{-- <link rel="stylesheet" href="{{ secure_asset('backend/assets/vendor/font-awesome/css/font-awesome.min.css') }}"> --}}
+<link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ secure_asset('backend/assets/vendor/linearicons/style.css') }}">
 <link rel="stylesheet" href="{{ secure_asset('backend/assets/vendor/chartist/css/chartist-custom.css') }}">
 <!-- MAIN CSS -->
