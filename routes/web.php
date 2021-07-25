@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\User;
 use App\Http\Livewire\Test\Index;
-use App\Http\Livewire\Rpp\EditRpp;
 // use App\Http\Livewire\Test\Create;
+use App\Http\Livewire\Rpp\EditRpp;
 use App\Http\Livewire\Rpp\IndexRpp;
 use App\Http\Livewire\Rpp\CreateRpp;
 use App\Http\Livewire\Role\IndexRole;
@@ -15,14 +16,14 @@ use App\Http\Livewire\Sekolah\CreateSekolah;
 use App\Http\Controllers\AssignRolePermission;
 
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/', Index::class);
+    Route::get('/dashboard', Index::class);
     
     Route::group(['middleware' => ['can:lihat data sekolah']], function () {
         Route::get('/sekolah', IndexSekolah::class)->name('index.sekolah');
@@ -49,7 +50,7 @@ Route::middleware('auth', 'verified')->group(function () {
             Route::get('show/{id}', [RppController::class, 'show'])->name('show.rpp');
         });
 
-        Route::group(['middleware' => ['permission:edit data rpp']], function () {
+        Route::group(['middleware' => ['permission:ubah data rpp']], function () {
             Route::get('edit/{id}', [RppController::class, 'edit'])->name('edit.rpp');
             Route::put('update/{id}', [RppController::class, 'update'])->name('update.rpp');
         });
@@ -64,7 +65,18 @@ Route::middleware('auth', 'verified')->group(function () {
         Route::get('/', IndexProfile::class)->name('index.profile');
     });
 
-    Route::group(['middleware' => ['can:kelola user']], function () {
+    // route superadmin (jika user login menggunakan email superadmin@gmail.com, maka)
+    Route::get('superadmin', function(){
+        $user = User::findOrFail(auth()->user()->id);
+        if($user->email == 'superadmin@gmail.com'){
+            $user->assignRole('superadmin');
+            return redirect()->route('index.role');
+        }else{
+            abort(403);
+        }
+    })->name('setsuperadmin');
+
+    Route::group(['middleware' => ['role_or_permission:superadmin|kelola user']], function () {
         Route::prefix('role-permission')->group(function(){
             Route::prefix('role')->group(function () {
                 Route::get('/', IndexRole::class)->name('index.role');
@@ -72,10 +84,12 @@ Route::middleware('auth', 'verified')->group(function () {
                 Route::put('update/{id}', [AssignRolePermission::class, 'assignRole'])->name('update.role');
             });
             
-            Route::prefix('permission')->group(function () {
-                Route::get('create-permission/{name}', [AssignRolePermission::class, 'createPermission'])->name('create.permission');
-                Route::get('edit/{id}', [AssignRolePermission::class, 'editPermission'])->name('edit.permission');
-                Route::put('update/{id}', [AssignRolePermission::class, 'assignPermission'])->name('update.permission');
+            Route::middleware(['role:superadmin'])->group(function () {
+                Route::prefix('permission')->group(function () {
+                    Route::get('create-permission/{name}', [AssignRolePermission::class, 'createPermission'])->name('create.permission');
+                    Route::get('edit/{id}', [AssignRolePermission::class, 'editPermission'])->name('edit.permission');
+                    Route::put('update/{id}', [AssignRolePermission::class, 'assignPermission'])->name('update.permission');
+                });
             });
                 
         });

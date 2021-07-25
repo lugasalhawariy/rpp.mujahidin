@@ -1,6 +1,8 @@
 <div>
     <div class="main-content">
         <div class="container-fluid">
+
+            @hasrole('superadmin')
             {{-- panel/card for button --}}
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -25,6 +27,7 @@
                 @livewire('role.create-role')
             @endif
     
+            
             {{-- panel content --}}
             <div class="panel panel-info">
                 <div class="mb-3">
@@ -87,6 +90,7 @@
                 </div>
             </div>
             {{-- end panel content --}}
+            @endhasrole
 
             {{-- panel content --}}
             <div class="panel panel-info">
@@ -104,8 +108,9 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Perbarui</th>
+                                <th scope="col">Verifikasi</th>
                                 <th scope="col">UBAH</th>
-                                <th scope="col">HAPUS</th>
+                                <th scope="col">AKSI</th>
                             </tr>
                         </thead>
                         {{-- end thead table --}}
@@ -118,11 +123,18 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ implode(', ', $item->getRoleNames()->toArray()) }}</td>
                                 <td>{{ $item->updated_at->diffForHumans() }}</td>
+                                <td>
+                                    @if ($item->email_verified_at !== null)
+                                        {{ $item->email_verified_at->format('d M Y') }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
                                 {{-- button --}}
                                 @if (!$item->hasRole('superadmin'))
                                 <td>
-                                    <a href="{{ route('edit.role', $item->id) }}" class="btn btn-sm bg-warning">
-                                        UBAH
+                                    <a href="{{ route('edit.role', $item->id) }}" class="btn btn-sm bg-primary">
+                                        Ganti Role
                                     </a>
                                 </td>
                                 @else
@@ -132,9 +144,21 @@
                                 @endif
                                 
                                 <td>
-                                    <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
-                                        <i class="lnr lnr-trash"></i>
-                                    </button>
+                                    @hasanyrole('superadmin|admin')
+                                    @if ($item->hasRole('superadmin'))
+                                        Tidak dapat akses
+                                    @else
+                                        @if ($item->email_verified_at !== null)
+                                        <button wire:click="blokir({{ $item->id }})" class="btn btn-danger badge rounded-pill">
+                                            Blokir
+                                        </button>
+                                        @else
+                                        <button wire:click="aktivasi({{ $item->id }})" class="btn btn-success badge rounded-pill">
+                                            Aktifkan
+                                        </button>
+                                        @endif
+                                    @endif
+                                    @endhasanyrole
                                 </td>
                             </tr>
                             @endforeach

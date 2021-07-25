@@ -50,7 +50,7 @@
                             <tr class="text-center">
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Mata Pelajran</th>
-                                <th scope="col">Yang upload</th>
+                                <th scope="col">Yang Buat</th>
                                 <th scope="col">Kelas</th>
                                 <th scope="col">Semester</th>
                                 <th scope="col">Tahun</th>

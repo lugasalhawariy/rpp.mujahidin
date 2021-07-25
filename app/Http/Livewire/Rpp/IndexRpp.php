@@ -20,29 +20,55 @@ class IndexRpp extends Component
 
     public function render()
     {
-        $rpp = RPP::latest()->paginate(5);
-        if($this->search !== null){
-            // $rpp = RPP::where('status', 'like', '%'.$this->search.'%')->latest()->paginate(5);
-            $value = $this->search;
-            $rpp = RPP::with(['sekolah', 'mapel'])
-                        ->whereHas('sekolah', function($q) use($value){
-                            $q->where('nama_sekolah', 'like', '%'.$value.'%')
-                                ->orWhere('nss', '=', $value)
-                                ->orWhere('npsn', '=', $value)
-                                ->orWhere('nama_kepsek', 'like', '%'.$value.'%');
-                                
-                        })
-                        ->orWhereHas('mapel', function($q) use($value){
-                            $q->where('nama_mapel', 'like', '%'.$value.'%')
-                                ->orWhere('tahun', '=', $value);
-                        })
-                        ->latest()->paginate(5);
-        }else{
+        if(auth()->user()->hasAnyRole('superadmin|admin')){
             $rpp = RPP::latest()->paginate(5);
+            if($this->search !== null){
+                // $rpp = RPP::where('status', 'like', '%'.$this->search.'%')->latest()->paginate(5);
+                
+                // FUNGSI SEARCHING BERDASARKAN NAMA SEKOLAH, NSS, NPSN, NAMA KEPSEK, NAMA MAPEL, TAHUN MAPEL
+                $value = $this->search;
+                $rpp = RPP::with(['sekolah', 'mapel'])
+                            ->whereHas('sekolah', function($q) use($value){
+                                $q->where('nama_sekolah', 'like', '%'.$value.'%')
+                                    ->orWhere('nss', '=', $value)
+                                    ->orWhere('npsn', '=', $value)
+                                    ->orWhere('nama_kepsek', 'like', '%'.$value.'%');
+                            })
+                            ->orWhereHas('mapel', function($q) use($value){
+                                $q->where('nama_mapel', 'like', '%'.$value.'%')
+                                    ->orWhere('tahun', '=', $value);
+                            })
+                            ->latest()->paginate(5);
+            }else{
+                $rpp = RPP::latest()->paginate(5);
+            }
+        }else{
+            $rpp = RPP::where('user_id', auth()->user()->id)->latest()->paginate(5);
+            if($this->search !== null){
+                // $rpp = RPP::where('status', 'like', '%'.$this->search.'%')->latest()->paginate(5);
+                
+                // FUNGSI SEARCHING BERDASARKAN NAMA SEKOLAH, NSS, NPSN, NAMA KEPSEK, NAMA MAPEL, TAHUN MAPEL
+                $value = $this->search;
+                $rpp = RPP::with(['sekolah', 'mapel'])
+                            ->whereHas('sekolah', function($q) use($value){
+                                $q->where('nama_sekolah', 'like', '%'.$value.'%')->where('user_id', auth()->user()->id)
+                                    ->orWhere('nss', '=', $value)->where('user_id', auth()->user()->id)
+                                    ->orWhere('npsn', '=', $value)->where('user_id', auth()->user()->id)
+                                    ->orWhere('nama_kepsek', 'like', '%'.$value.'%')->where('user_id', auth()->user()->id);
+                                    
+                            })
+                            ->orWhereHas('mapel', function($q) use($value){
+                                $q->where('nama_mapel', 'like', '%'.$value.'%')->where('user_id', auth()->user()->id)
+                                    ->orWhere('tahun', '=', $value)->where('user_id', auth()->user()->id);
+                            })
+                            ->latest()->paginate(5);
+            }else{
+                $rpp = RPP::where('user_id', auth()->user()->id)->latest()->paginate(5);
+            }
         }
         return view('livewire.rpp.index-rpp', compact('rpp'))
-            ->extends('layouts.backend')
-            ->section('content');
+                ->extends('layouts.backend')
+                ->section('content');
     } 
 
     public function delete($id)
