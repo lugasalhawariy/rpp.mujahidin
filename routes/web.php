@@ -24,52 +24,62 @@ use App\Http\Controllers\AssignRolePermission;
 Route::get('/', function () {
     return view('pages.home');
 });
+
 require __DIR__.'/auth.php';
 
+
+// Bisa dimasuki jika sudah login dan terverifikasi.
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/dashboard', Index::class);
+    Route::get('/dashboard', Index::class)->name('dashboard');
     
+    // bisa diakses jika ada izin lihat sekolah (spatie)
     Route::group(['middleware' => ['can:lihat-sekolah']], function () {
         Route::get('/sekolah', IndexSekolah::class)->name('index.sekolah');
-        // Route::get('/tambah-sekolah', CreateSekolah::class)->name('create.sekolah');
     });
 
+    // bisa diakses jika ada izin lihat mapel (spatie)
     Route::group(['middleware' => ['can:lihat-mapel']], function () {
         Route::get('/mapel', IndexMapel::class)->name('index.mapel');
-        // Route::get('/create-rpp', CreateRpp::class)->name('create.rpp')->middleware('auth');
     });
 
+    // Route table RPP
     Route::prefix('rpp')->group(function () {
 
+        // bisa dimasuki jika ada izin lihat rpp
         Route::group(['middleware' => ['permission:lihat-rpp']], function () {
             Route::get('/', IndexRpp::class)->name('index.rpp');
         });
 
+        // bisa diakses jika role user memiliki izin tambah rpp
         Route::group(['middleware' => ['permission:tambah-rpp']], function () {
             Route::get('create', [RppController::class, 'create'])->name('create.rpp');
             Route::post('store', [RppController::class, 'store'])->name('store.rpp');
         });
         
+        // bisa diakses jika role user memiliki izin melihat detail rpp
         Route::group(['middleware' => ['permission:detail-rpp']], function () {
             Route::get('show/{id}', [RppController::class, 'show'])->name('show.rpp');
         });
 
+        // bisa diakses jika role user memiliki izin untuk mengubah rpp
         Route::group(['middleware' => ['permission:ubah-rpp']], function () {
             Route::get('edit/{id}', [RppController::class, 'edit'])->name('edit.rpp');
             Route::put('update/{id}', [RppController::class, 'update'])->name('update.rpp');
         });
         
+        // bisa diakses jika role user memiliki izin untuk cetak rpp
         Route::group(['middleware' => ['permission:cetak-rpp']], function () {
             Route::get('pdf/{id}', [RppController::class, 'cetak'])->name('pdf.rpp');
         });
     });
     
-
+    // -------BELOM DIBUAT----------
     Route::prefix('profile')->group(function (){
         Route::get('/', IndexProfile::class)->name('index.profile');
     });
 
-    // route superadmin (jika user login menggunakan email superadmin@gmail.com, maka)
+    // route superadmin (jika user login menggunakan email superadmin@gmail.com, maka...
+    // User dapat mengakses route dibawah ini.
     Route::get('superadmin', function(){
         $user = User::findOrFail(auth()->user()->id);
         if($user->email == 'superadmin@gmail.com'){
@@ -80,6 +90,8 @@ Route::middleware('auth', 'verified')->group(function () {
         }
     })->name('setsuperadmin');
 
+    // Jika user memiliki role superadmin/rolenya memiliki izin kelola user, maka... 
+    // User dapat mengelola role permission pada route.
     Route::group(['middleware' => ['role_or_permission:superadmin|kelola-user']], function () {
         Route::prefix('role-permission')->group(function(){
             Route::prefix('role')->group(function () {
@@ -90,12 +102,11 @@ Route::middleware('auth', 'verified')->group(function () {
             
             Route::middleware(['role:superadmin'])->group(function () {
                 Route::prefix('permission')->group(function () {
-                    Route::get('create-permission/{name}', [AssignRolePermission::class, 'createPermission'])->name('create.permission');
+                    Route::get('create-permission/{name}', [AssignRolePermission::class, 'createPermissionGroup'])->name('create.permission');
                     Route::get('edit/{id}', [AssignRolePermission::class, 'editPermission'])->name('edit.permission');
                     Route::put('update/{id}', [AssignRolePermission::class, 'assignPermission'])->name('update.permission');
                 });
             });
-                
         });
     });
 });

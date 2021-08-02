@@ -14,16 +14,15 @@ class RppController extends Controller
 {
     public function create()
     {
-        $sekolah = Sekolah::latest()->get();
-        $mapel = Mapel::latest()->get();
-        return view('pages.rpp.create', compact('sekolah', 'mapel'));
+        $mapel = Mapel::where('sekolah_id', auth()->user()->sekolah_id)->latest()->get();
+        return view('pages.rpp.create', compact('mapel'));
     }
 
-    public function store(Request $request)
+    public function store(RppRequest $request)
     {
         RPP::create([
             'user_id' => auth()->user()->id,
-            'sekolah_id' => $request->sekolah_id,
+            'sekolah_id' => auth()->user()->sekolah_id,
             'mapel_id' => $request->mapel_id,
             'alokasi_waktu' => $request->alokasi_waktu,
             'pendekatan' => $request->pendekatan,
@@ -51,18 +50,17 @@ class RppController extends Controller
 
     public function edit($id)
     {
-        $sekolah = Sekolah::latest()->get();
-        $mapel = Mapel::latest()->get();
+        $mapel = Mapel::where('sekolah_id', auth()->user()->sekolah_id)->latest()->get();
         $data = RPP::findOrFail($id);
-        return view('pages.rpp.edit', compact('data', 'sekolah', 'mapel'));
+        return view('pages.rpp.edit', compact('data', 'mapel'));
     }
 
-    public function update(Request $request, $id)
+    public function update(RppRequest $request, $id)
     {
         $data = RPP::findOrFail($id);
         $data->update([
             'user_id' => auth()->user()->id,
-            'sekolah_id' => $request->sekolah_id,
+            'sekolah_id' => auth()->user()->sekolah_id,
             'mapel_id' => $request->mapel_id,
             'alokasi_waktu' => $request->alokasi_waktu,
             'pendekatan' => $request->pendekatan,
@@ -85,6 +83,6 @@ class RppController extends Controller
     {
         $rpp = RPP::findOrFail($id);
         $pdf = PDF::loadview('pages.rpp.cetak', ['rpp' => $rpp]);
-        return $pdf->download('rpp.pdf');
+        return $pdf->download('rpp.pdf'); 
     }
 }

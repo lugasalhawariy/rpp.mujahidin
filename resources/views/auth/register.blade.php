@@ -55,7 +55,7 @@
                             <button type="submit" class="btn btn-block btn-success">
                                 {{ __('Register') }}
                             </button>
-                            <a class="btn btn-block btn-dark" href="/login" style="text-decoration: none;">
+                            <a class="align-items-center btn btn-block btn-dark d-flex justify-content-center" href="/login" style="text-decoration: none;">
                                 {{ __('Saya sudah punya Akun') }}
                             </a>
 

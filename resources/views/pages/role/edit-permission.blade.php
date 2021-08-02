@@ -22,12 +22,14 @@
                         <div class="row">
                             <div class="form-group row">
                                 <div class="col-sm-10 col-md-6">
-                                    @foreach ($permissions as $value)
                                     <div class="row">
-                                        <input type="checkbox" {{ $data->permissions()->find($value->id) ? "checked" : "" }} value="{{ $value->id }}" name="permissions[]" class="w-4 h-4 text-green-500 form-checkbox">
-                                        <span class="ml-3 text-sm">{{ $value->name }}</span>
+                                    @foreach ($permissions as $value)
+                                        <div class="col-md-4">
+                                            <input type="checkbox" {{ $data->permissions()->find($value->id) ? "checked" : "" }} value="{{ $value->id }}" name="permissions[]" class="w-4 h-4 text-green-500 form-checkbox">
+                                            <span class="ml-3 text-sm">{{ $value->name }}</span>
+                                        </div>
+                                        @endforeach
                                     </div>
-                                    @endforeach
                                     @error('permissions')
                                         <small class="mt-2 text-danger">
                                             {{ $message }}
@@ -35,7 +37,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group row">
                                 <button type="submit" class="btn btn-primary form-control">Update</button>
                             </div>
                         </div>

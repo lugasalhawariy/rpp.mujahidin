@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="{{ secure_asset('auth/fonts/icomoon/style.css') }}">
+<link rel="stylesheet" href="{{ asset('auth/fonts/icomoon/style.css') }}">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="{{ secure_asset('auth/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('auth/css/bootstrap.min.css') }}">
 <!-- Style -->
-<link rel="stylesheet" href="{{ secure_asset('auth/css/style2.css') }}">
+<link rel="stylesheet" href="{{ asset('auth/css/style2.css') }}">

@@ -15,7 +15,7 @@ class CreateMapel extends Component
     {
         $this->validateOnly($data, [
             'nama_mapel' => 'min:3|max:255',
-            'tahun' => 'min:4|max:4',
+            'tahun' => 'min:4',
         ]);
 
     }
@@ -27,7 +27,7 @@ class CreateMapel extends Component
     ];
 
 
-    // event tambah data sekolah
+    // event tambah data mapel
     public function addItem()
     {
         // Validasi Permission (commingsoon)
@@ -35,9 +35,9 @@ class CreateMapel extends Component
         // VALIDASI DATA
         $this->validate([
             'nama_mapel' => 'required|max:255',
-            'kelas' => 'required|max:2',
-            'semester' => 'required|min:5|max:10',
-            'tahun' => 'required|min:4|max:4',
+            'kelas' => 'required',
+            'semester' => 'required',
+            'tahun' => 'required|min:4',
         ]);
 
         // Create data simpan ke database sekolah
@@ -46,7 +46,7 @@ class CreateMapel extends Component
             'kelas' => $this->kelas,
             'semester' => $this->semester,
             'tahun' => $this->tahun,
-            'user_id' => auth()->user()->id
+            'sekolah_id' => auth()->user()->sekolah_id
         ]);
 
         // hapus form input model setelah proses menyimpan

@@ -22,6 +22,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'username',
+        'sekolah_id',
+        'no_telp',
+        'tgl_lahir',
+        'nbm_guru',
+        'nip_guru',
+        'alamat',
+        'riwayat_pendidikan'
     ];
 
     /**
@@ -43,11 +51,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function mapel()
+    // sekolah memiliki banyak user
+    public function sekolah()
     {
-        return $this->hasMany(Mapel::class);
+        return $this->belongsTo(Sekolah::class, 'sekolah_id');
     }
 
+    // user memiliki banyak rpp
     public function rpp()
     {
         return $this->hasMany(RPP::class);

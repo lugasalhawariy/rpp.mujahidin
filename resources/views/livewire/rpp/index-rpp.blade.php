@@ -67,59 +67,61 @@
                         {{-- tbody table --}}
                         <tbody>
                             @foreach ($rpp as $index => $item)
-                            <tr class="text-center">
-                                <td scope="row">{{ $index+1 }}</td>
-                                <td>
-                                    {{ $item->user->name }}
-                                </td>
-                                <td>
-                                    {{ $item->sekolah->nama_sekolah ?? 'Sekolah telah dihapus, tolong ubah terlebih dahulu.'}}
-                                </td>
-                                <td>
-                                    {{ $item->mapel->nama_mapel ?? 'Sekolah telah dihapus, tolong ubah terlebih dahulu.'}}
-                                </td>
-                                <td>
-                                    <span class="badge rounded-pill 
-                                    @if ($item->status === 'success')
-                                        bg-danger
-                                    @else
-                                        bg-info
-                                    @endif">
-                                        {{ $item->status }}
-                                    </span>
-                                </td>
-                                <td>
-                                    {{ $item->updated_at->diffForHumans() }}
-                                </td>
-                                @can('detail-rpp')
-                                <td>
-                                    <a href="{{ route('show.rpp', $item->id) }}" class="btn btn-sm bg-warning">
-                                        DETAIL
-                                    </a>
-                                </td>
-                                @endcan
-                                @can('ubah-rpp')
-                                <td>
-                                    <a href="{{ route('edit.rpp', $item->id) }}" class="btn btn-sm bg-info">
-                                        EDIT
-                                    </a>
-                                </td>
-                                @endcan
-                                @can('cetak-rpp')
-                                <td>
-                                    <a href="{{ route('pdf.rpp', $item->id) }}" class="btn btn-sm bg-danger">
-                                        DOWNLOAD PDF
-                                    </a>
-                                </td>
-                                @endcan
-                                @can('hapus-rpp')
-                                <td>
-                                    <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
-                                        <i class="lnr lnr-trash"></i>
-                                    </button>
-                                </td>
-                                @endcan
-                            </tr>
+                                @if ($item->sekolah_id === auth()->user()->sekolah_id)
+                                    <tr class="text-center">
+                                        <td scope="row">{{ $index+1 }}</td>
+                                        <td>
+                                            {{ $item->user->name }}
+                                        </td>
+                                        <td>
+                                            {{ $item->sekolah->nama_sekolah ?? 'Sekolah telah dihapus, tolong ubah terlebih dahulu.'}}
+                                        </td>
+                                        <td>
+                                            {{ $item->mapel->nama_mapel ?? 'Sekolah telah dihapus, tolong ubah terlebih dahulu.'}}
+                                        </td>
+                                        <td>
+                                            <span class="badge rounded-pill 
+                                            @if ($item->status === 'success')
+                                                bg-danger
+                                            @else
+                                                bg-info
+                                            @endif">
+                                                {{ $item->status }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            {{ $item->updated_at->diffForHumans() }}
+                                        </td>
+                                        @can('detail-rpp')
+                                        <td>
+                                            <a href="{{ route('show.rpp', $item->id) }}" class="btn btn-sm bg-warning">
+                                                DETAIL
+                                            </a>
+                                        </td>
+                                        @endcan
+                                        @can('ubah-rpp')
+                                        <td>
+                                            <a href="{{ route('edit.rpp', $item->id) }}" class="btn btn-sm bg-info">
+                                                EDIT
+                                            </a>
+                                        </td>
+                                        @endcan
+                                        @can('cetak-rpp')
+                                        <td>
+                                            <a href="{{ route('pdf.rpp', $item->id) }}" class="btn btn-sm bg-danger">
+                                                DOWNLOAD PDF
+                                            </a>
+                                        </td>
+                                        @endcan
+                                        @can('hapus-rpp')
+                                        <td>
+                                            <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
+                                                <i class="lnr lnr-trash"></i>
+                                            </button>
+                                        </td>
+                                        @endcan
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                         {{-- end tbody table --}}

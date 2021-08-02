@@ -20,7 +20,7 @@ class AssignRolePermission extends Controller
                 abort(403);
             }
         }
-        $permissions = Permission::latest()->get();
+        $permissions = Permission::latest()->orderBy('id', 'desc')->get();
         return view('pages.role.edit-permission', compact('data', 'permissions'));
     }
 
@@ -57,9 +57,16 @@ class AssignRolePermission extends Controller
         return redirect()->route('index.role');
     }
 
-    public function createPermission(Request $request)
+    public function createPermissionGroup(Request $request)
     {
-        Artisan::call("permission:create-permission $request->name");
+        if($request->name == 'rpp'){
+            Artisan::call("permission:create-permission cetak-$request->name");
+        }
+        Artisan::call("permission:create-permission tambah-$request->name");
+        Artisan::call("permission:create-permission lihat-$request->name");
+        Artisan::call("permission:create-permission ubah-$request->name");
+        Artisan::call("permission:create-permission hapus-$request->name");
+        Artisan::call("permission:create-permission detail-$request->name");
         return redirect()->route('index.role');
     }
 }

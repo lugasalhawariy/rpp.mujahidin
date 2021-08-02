@@ -49,8 +49,8 @@
                         <thead>
                             <tr class="text-center">
                                 <th scope="col">No</th>
-                                <th scope="col">Nama Mata Pelajran</th>
-                                <th scope="col">Yang Buat</th>
+                                <th scope="col">Mata Pelajaran</th>
+                                <th scope="col">Sekolah</th>
                                 <th scope="col">Kelas</th>
                                 <th scope="col">Semester</th>
                                 <th scope="col">Tahun</th>
@@ -63,10 +63,12 @@
                         {{-- tbody table --}}
                         <tbody>
                             @foreach ($mapel as $index => $item)
+                            {{-- admin hanya akan melihat data mapel dari sekolahnya --}}
+                            @if ($item->sekolah_id === auth()->user()->sekolah_id)
                             <tr class="text-center">
                                 <td scope="row">{{ $index+1 }}</td>
                                 <td>{{ $item->nama_mapel }}</td>
-                                <td>{{ $item->user->name }}</td>
+                                <td>{{ $item->sekolah->nama_sekolah }}</td>
                                 <td>{{ $item->kelas }}</td>
                                 <td>{{ $item->semester }}</td>
                                 <td><span class="badge rounded-pill bg-secondary text-dark">{{ $item->tahun }}</span></td>
@@ -82,6 +84,7 @@
                                     </button>
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                         {{-- end tbody table --}}

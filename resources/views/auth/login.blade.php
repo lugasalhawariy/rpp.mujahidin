@@ -22,27 +22,26 @@
                             @csrf
                             <div class="mb-2 form-group first">
                                 <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
+                            @error('email')
+                                <span class="text-danger" role="alert">
+                                    <small>Email tidak ditemukan</small>
+                                </span>
+                            @enderror
                             <div class="mb-2 form-group last">
                                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
+                            @error('password')
+                                <span class="text-danger" role="alert">
+                                    <small>{{ $message }}</small>
+                                </span>
+                            @enderror
                             <button type="submit" class="mb-2 btn btn-block btn-success">
                                 {{ __('Login') }}
                             </button>
-                            <a class="btn btn-block btn-dark" href="/register" style="text-decoration: none;">
-                                {{ __('Belum punya Akun ?') }}
+                            <a class="align-items-center btn btn-block btn-dark d-flex justify-content-center" href="/register" style="text-decoration: none;">
+                                Belum punya akun
                             </a>
-
                             </div>
                         </form>
                     </div>

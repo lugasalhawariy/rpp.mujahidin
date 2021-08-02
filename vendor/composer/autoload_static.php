@@ -37,6 +37,7 @@ class ComposerStaticInit469c35926977b8f16fca3793c6e71846
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
+        '672060c7ae621db36b3a3a88ad27b30f' => __DIR__ . '/..' . '/forxer/laravel-gravatar/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -47,6 +48,11 @@ class ComposerStaticInit469c35926977b8f16fca3793c6e71846
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'f' => 
+        array (
+            'forxer\\LaravelGravatar\\' => 23,
+            'forxer\\Gravatar\\' => 16,
         ),
         'W' => 
         array (
@@ -193,6 +199,14 @@ class ComposerStaticInit469c35926977b8f16fca3793c6e71846
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'forxer\\LaravelGravatar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/forxer/laravel-gravatar/src',
+        ),
+        'forxer\\Gravatar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/forxer/gravatar/src',
         ),
         'Whoops\\' => 
         array (
@@ -566,7 +580,6 @@ class ComposerStaticInit469c35926977b8f16fca3793c6e71846
         'App\\Http\\Livewire\\Profile\\IndexProfile' => __DIR__ . '/../..' . '/app/Http/Livewire/Profile/IndexProfile.php',
         'App\\Http\\Livewire\\Role\\CreateRole' => __DIR__ . '/../..' . '/app/Http/Livewire/Role/CreateRole.php',
         'App\\Http\\Livewire\\Role\\IndexRole' => __DIR__ . '/../..' . '/app/Http/Livewire/Role/IndexRole.php',
-        'App\\Http\\Livewire\\Rpp\\EditRpp' => __DIR__ . '/../..' . '/app/Http/Livewire/Rpp/EditRpp.php',
         'App\\Http\\Livewire\\Rpp\\IndexRpp' => __DIR__ . '/../..' . '/app/Http/Livewire/Rpp/IndexRpp.php',
         'App\\Http\\Livewire\\Sekolah\\CreateSekolah' => __DIR__ . '/../..' . '/app/Http/Livewire/Sekolah/CreateSekolah.php',
         'App\\Http\\Livewire\\Sekolah\\IndexSekolah' => __DIR__ . '/../..' . '/app/Http/Livewire/Sekolah/IndexSekolah.php',
@@ -5568,6 +5581,12 @@ class ComposerStaticInit469c35926977b8f16fca3793c6e71846
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'forxer\\Gravatar\\Gravatar' => __DIR__ . '/..' . '/forxer/gravatar/src/Gravatar.php',
+        'forxer\\Gravatar\\Image' => __DIR__ . '/..' . '/forxer/gravatar/src/Image.php',
+        'forxer\\Gravatar\\Profile' => __DIR__ . '/..' . '/forxer/gravatar/src/Profile.php',
+        'forxer\\LaravelGravatar\\Facade' => __DIR__ . '/..' . '/forxer/laravel-gravatar/src/Facade.php',
+        'forxer\\LaravelGravatar\\Gravatar' => __DIR__ . '/..' . '/forxer/laravel-gravatar/src/Gravatar.php',
+        'forxer\\LaravelGravatar\\ServiceProvider' => __DIR__ . '/..' . '/forxer/laravel-gravatar/src/ServiceProvider.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

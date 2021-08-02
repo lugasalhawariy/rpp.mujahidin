@@ -20,6 +20,7 @@ class IndexRpp extends Component
 
     public function render()
     {
+        // jika si user memiliki role superadmin/admin
         if(auth()->user()->hasAnyRole('superadmin|admin')){
             $rpp = RPP::latest()->paginate(5);
             if($this->search !== null){
@@ -59,7 +60,7 @@ class IndexRpp extends Component
                             })
                             ->orWhereHas('mapel', function($q) use($value){
                                 $q->where('nama_mapel', 'like', '%'.$value.'%')->where('user_id', auth()->user()->id)
-                                    ->orWhere('tahun', '=', $value)->where('user_id', auth()->user()->id);
+                                    ->orWhere('tahun', 'like', '%'.$value)->where('user_id', auth()->user()->id);
                             })
                             ->latest()->paginate(5);
             }else{

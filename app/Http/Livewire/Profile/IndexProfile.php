@@ -11,12 +11,20 @@ class IndexProfile extends Component
     public function mount()
     {
         $this->user = User::findOrFail(auth()->user()->id);
+        if(!$this->user){
+            abort(404);
+        }
     }
 
     public function render()
     {
-        return view('livewire.profile.index-profile')
-            ->extends('layouts.setting-profile')
+        $user = $this->user;
+        return view('livewire.profile.index-profile', compact('user'))
             ->section('content');
+    }
+
+    public function updateUser()
+    {
+        
     }
 }

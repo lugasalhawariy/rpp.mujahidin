@@ -1,7 +1,7 @@
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="/"><img src="{{ secure_asset('backend/assets/img/almujahid.png') }}" alt="Klorofil Logo" class="img-responsive logo"></a>
+            <a href="/"><img src="{{ asset('backend/assets/img/almujahid.png') }}" alt="Klorofil Logo" class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">
@@ -24,9 +24,13 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ secure_asset('backend/assets/img/user.png') }}" class="img-circle" alt="Avatar"> <span>{{ auth()->user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ gravatar()->avatar(auth()->user()->email) }}" class="img-circle" alt="Avatar"> 
+                                <span>{{ auth()->user()->name }}</span> 
+                                <i class="icon-submenu lnr lnr-chevron-down"></i>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ route('index.profile') }}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                            <li><a data-toggle="modal" data-target="#exampleModal" href="{{ route('index.profile') }}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                             <li>
@@ -45,4 +49,6 @@
             </div>
         </div>
     </nav>
+
+    @livewire('profile.index-profile')
 </div>

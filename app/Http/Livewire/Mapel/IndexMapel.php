@@ -27,9 +27,12 @@ class IndexMapel extends Component
     
     public function render()
     {
-        $mapel = Mapel::latest()->paginate(5);
+        if(auth()->user()->sekolah_id == null){
+            abort(403);
+        }
+        $mapel = Mapel::latest()->paginate(10);
         if($this->search !== null){
-            $mapel = Mapel::where('nama_mapel', 'like', '%' . $this->search . '%')->latest()->paginate(5);
+            $mapel = Mapel::where('nama_mapel', 'like', '%' . $this->search . '%')->latest()->paginate(10);
         }
         return view('livewire.mapel.index-mapel', compact('mapel'))
             ->extends('layouts.backend')

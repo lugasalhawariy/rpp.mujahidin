@@ -22,12 +22,16 @@
                         <div class="row">
                             <div class="form-group row">
                                 <div class="col-sm-10 col-md-6">
-                                    @foreach ($roles as $value)
                                     <div class="row">
-                                        <input type="checkbox" {{ $data->roles()->find($value->id) ? "checked" : "" }} value="{{ $value->id }}" name="roles[]" class="w-4 h-4 text-green-500 form-checkbox">
-                                        <span class="ml-3 text-sm">{{ $value->name }}</span>
-                                    </div>
+                                    @foreach ($roles as $value)
+                                    @if ($value->name !== 'superadmin')
+                                        <div class="col-md-4">
+                                            <input type="checkbox" {{ $data->roles()->find($value->id) ? "checked" : "" }} value="{{ $value->id }}" name="roles[]" class="w-4 h-4 text-green-500 form-checkbox">
+                                            <span class="ml-3 text-sm">{{ $value->name }}</span>
+                                        </div>
+                                    @endif
                                     @endforeach
+                                    </div>
                                     @error('roles')
                                         <small class="mt-2 text-danger">
                                             {{ $message }}
@@ -35,7 +39,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group row">
                                 <button type="submit" class="btn btn-primary form-control">Update</button>
                             </div>
                         </div>

@@ -9,13 +9,19 @@ class Mapel extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['user_id', 'nama_mapel', 'kelas', 'semester', 'tahun'];
+    protected $fillable = [
+        'sekolah_id', 
+        'nama_mapel', 
+        'kelas', 
+        'semester', 
+        'tahun'
+    ];
     protected $table = 'mapel';
 
 
-    public function user()
+    public function sekolah()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Sekolah::class);
     }
 
     public function rpp()

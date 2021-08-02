@@ -21,82 +21,90 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="inputPassword4">SEKOLAH</label>
-                                <input type="hidden" name="user_id" value="#">
-                                <select name="sekolah_id" id="inputState" class="form-control">
-                                    @foreach ($sekolah as $item_sekolah)
-                                        <option @if ($data->sekolah_id == $item_sekolah->id) selected @endif value="{{ $item_sekolah->id }}">{{ $item_sekolah->nama_sekolah }}</option>
-                                    @endforeach
-                                </select>
-                                @error('sekolah_id')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                            <div class="form-group col-md-6">
                                 <label for="inputPassword4">PELAJARAN</label>
+                                <input type="hidden" name="user_id" value="#">
+                                <input type="hidden" name="sekolah_id" value="#">
                                 <select name="mapel_id" id="inputState" class="form-control">
                                     @foreach ($mapel as $item_mapel)
                                         <option @if ($data->mapel_id == $item_mapel->id) selected @endif value="{{ $item_mapel->id }}">{{ $item_mapel->nama_mapel }}</option>
                                     @endforeach
                                 </select>
                                 @error('mapel_id')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">ALOKASI WAKTU</label>
                                 <input name="alokasi_waktu" type="text" class="form-control" value="{{ $data->alokasi_waktu }}">
                                 @error('alokasi_waktu')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">PENDEKATAN</label>
                                 <input name="pendekatan" type="text" class="form-control" value="{{ $data->pendekatan }}">
                                 @error('pendekatan')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">STRATEGI</label>
                                 <input name="strategi" type="text" class="form-control" value="{{ $data->strategi }}">
                                 @error('strategi')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">METODE RPP</label>
                                 <input name="metode_rpp" type="text" class="form-control" value="{{ $data->metode_rpp }}">
                                 @error('metode_rpp')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">TEKNIK MATERI</label>
                                 <input name="teknik_materi" type="text" class="form-control" value="{{ $data->teknik_materi }}">
                                 @error('teknik_materi')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">TEKNIK PENILAIAN</label>
                                 <input name="teknik_penilaian" type="text" class="form-control" value="{{ $data->teknik_penilaian }}">
                                 @error('teknik_penilaian')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">ALAT</label>
                                 <input name="alat" type="text" class="form-control" value="{{ $data->alat }}">
                                 @error('alat')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">BENTUK</label>
                                 <input name="bentuk" type="text" class="form-control" value="{{ $data->bentuk }}">
                                 @error('bentuk')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <br>
@@ -106,7 +114,9 @@
                                     {!! $data->kompetensi_dasar !!}
                                 </textarea>
                                 @error('kompetensi_dasar')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
@@ -115,7 +125,9 @@
                                     {!! $data->ipk !!}
                                 </textarea>
                                 @error('ipk')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
@@ -124,7 +136,9 @@
                                     {!! $data->tujuan !!}
                                 </textarea>
                                 @error('tujuan')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
@@ -133,7 +147,9 @@
                                     {!! $data->materi_rpp !!}
                                 </textarea>
                                 @error('materi_rpp')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
@@ -142,11 +158,18 @@
                                     {!! $data->langkah_rpp !!}
                                 </textarea>
                                 @error('langkah_rpp')
-                                    {{ $message }}
+                                    <span class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-primary form-control">Update</button>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <a href="{{ route('index.rpp') }}" class="btn btn-secondary form-control">
+                                    Cancel
+                                </a>
                             </div>
                         </div>
                     </div>

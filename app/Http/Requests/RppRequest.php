@@ -25,8 +25,6 @@ class RppRequest extends FormRequest
     {
         return [
             'mapel_id' => 'required|integer|exists:mapel,id',
-            'user_id' => 'required|integer|exists:user,id',
-            'sekolah_id' => 'required|integer|exists:sekolah,id',
             'alokasi_waktu' => 'required',
             'pendekatan' => 'required',
             'strategi' => 'required',

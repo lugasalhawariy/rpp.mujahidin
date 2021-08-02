@@ -13,7 +13,7 @@
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Mapel</label>
                     <div class="col-sm-10">
-                        <input type="hidden" wire:model="user_id" value="#">
+                        <input type="hidden" wire:model="sekolah_id" value="#">
                         <input wire:model="nama_mapel" type="text" class="form-control" placeholder="Masukan nama sekolah">
                         @error('nama_mapel')
                             <small class="mt-2 text-danger">

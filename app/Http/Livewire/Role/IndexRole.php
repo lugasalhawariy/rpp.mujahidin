@@ -7,9 +7,11 @@ use Livewire\Component;
 use Illuminate\Support\Carbon;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Livewire\WithPagination;
 
 class IndexRole extends Component
 {
+    use WithPagination;
     public $show = false;
     public $search, $search_user;
     public $name, $role_id;
@@ -18,12 +20,12 @@ class IndexRole extends Component
     public function refreshPage()
     {
         session()->flash('message', 'Successfully created');
-        $roles = Role::latest()->paginate(5);
+        $roles = Role::latest()->paginate(10);
         
         if(auth()->user()->hasRole('superadmin')){
-            $users = User::role('superadmin')->paginate(5);
+            $users = User::role('superadmin')->paginate(10);
         }else{
-            $users = User::latest()->paginate(5);
+            $users = User::latest()->paginate(10);
         }
     }
 
@@ -31,22 +33,22 @@ class IndexRole extends Component
     {
         // dapatkan user yang memiliki role guru (kondisi untuk admin)
         if(auth()->user()->hasRole('admin')){
-            $users = User::role('guru')->paginate(5);
+            $users = User::role('guru')->paginate(10);
         }
         else{
-            $users = User::latest()->paginate(5);
+            $users = User::latest()->paginate(10);
         }
 
         // ambil semua data roles
-        $roles = Role::latest()->paginate(5);
+        $roles = Role::latest()->paginate(10);
 
         // kondisi jika ada input search/pencarian
         if($this->search !== null || $this->search_user !== null){
-            $roles = Role::where('name', 'like', '%' . $this->search . '%')->latest()->paginate(5);
+            $roles = Role::where('name', 'like', '%' . $this->search . '%')->latest()->paginate(10);
             if(auth()->user()->hasRole('admin')){
-                $users = User::where('name', 'like', '%' . $this->search_user . '%')->role('guru')->paginate(5);
+                $users = User::where('name', 'like', '%' . $this->search_user . '%')->role('guru')->paginate(10);
             }else{
-                $users = User::where('name', 'like', '%' . $this->search_user . '%')->latest()->paginate(5);
+                $users = User::where('name', 'like', '%' . $this->search_user . '%')->latest()->paginate(10);
             }
         }
         return view('livewire.role.index-role', compact('roles', 'users'))

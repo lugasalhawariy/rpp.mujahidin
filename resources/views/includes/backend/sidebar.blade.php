@@ -2,7 +2,7 @@
     <div class="sidebar-scroll">
         <nav>
             <ul class="nav">
-                <li><a href="#"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                <li><a href="{{ route('dashboard') }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                 @if(auth()->user()->can('kelola-user') || auth()->user()->email == 'superadmin@gmail.com')
                 <li><a href="{{ route('index.role') }}" class="{{ Route::currentRouteNamed('index.role') ? 'active' : '' }}"><i class="lnr lnr-user"></i> <span>Kelola Izin</span></a></li>
                 @endif

@@ -15,6 +15,7 @@ class CreateRppTable extends Migration
     {
         Schema::create('rpp', function (Blueprint $table) {
             $table->id();
+            // kalo akun user dihapus maka seluruh data RPP milik user akan otomatis di delete.
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('sekolah_id');
             $table->integer('mapel_id');

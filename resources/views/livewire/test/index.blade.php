@@ -1,65 +1,43 @@
 <div>
     <div class="main-content">
         <div class="container-fluid">
-            {{-- panel/card for button --}}
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h1 class="panel-title" style="color:black; margin-top:7px; font-family:tahoma; "></h1>
-                </div>
-                {{-- tombol --}}
+        <div class="panel panel-headline">
+            <div class="panel-heading">
+                <h3 class="panel-title">Beranda</h3>
+            </div>
+            <div class="panel-body">
                 <div class="row">
-                    <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-plus-circle"></i> Buat RPP</button>
-                    <a class='btn btn-success' href='#'><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a>
-                    <a class='btn btn-danger' href='#'><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
-                </div>
-                {{-- end tombol panel for button --}}
-                <hr>
-            </div>
-            {{-- end panel/card button --}}
-    
-            {{-- panel content --}}
-            <div class="panel panel-info">
-                <div class="panel-body">
-                    {{-- table --}}
-                    <table class="table caption-top">
-                        {{-- thead table --}}
-                        <thead>
-                            <tr class="text-center">
-                                <th scope="col">No</th>
-                                <th scope="col">MATERI PRODUK</th>
-                                <th scope="col">DI UNGGAH OLEH</th>
-                                <th scope="col">PELAJARAN</th>
-                                <th scope="col">KELAS</th>
-                                <th scope="col">STATUS</th>
-                                <th scope="col">CETAK</th>
-                                <th scope="col">UBAH</th>
-                                <th scope="col">HAPUS</th>
-                            </tr>
-                        </thead>
-                        {{-- end thead table --}}
-    
-                        {{-- tbody table --}}
-                        <tbody>
-                            <tr class="text-center">
-                                <td scope="row">1</td>
-                                <td>Bahasa Inggirs</td>
-                                <td>Tri Bima Sakty</td>
-                                <td>Pancasila</td>
-                                <td>XI</td>
-                                <td><span class="badge rounded-pill bg-success text-dark">DI TERIMA</span></td>
-                                <td><a href="#"><span class="badge rounded-pill bg-dark">CETAK</span></a></td>
-                                <td><span class="badge rounded-pill bg-secondary">UBAH</span></td>
-                                <td><span class="badge rounded-pill bg-danger"><i class="lnr lnr-trash"></i></span></td>
-                            </tr>
-                        </tbody>
-                        {{-- end tbody table --}}
-                    </table>
-                    {{-- end table --}}
+                    <div class="col-md-4">
+                        <div class="metric">
+                            <span class="icon"><i style="margin-top:15px;"class="fa fa-file"></i></span>
+                            <p>
+                                <span class="number">{{ $data_mapel }}</span>
+                                <span class="title">Mata Pelajaran</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric">
+                            <span  style="background-color: #5B7E4E;" class="icon"><i style="margin-top:15px;" class="fa fa-user"></i></span>
+                            <p>
+                                <span class="number">{{ $data_guru }}</span>
+                                <span class="title">Data Guru</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric">
+                            <span  style="background-color: #FFBF60;" class="icon"><i style="margin-top:15px;" class="fa fa-eye"></i></span>
+                            <p>
+                                <span class="number">{{ $data_rpp }}</span>
+                                <span class="title">Data Laporan RPP</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {{-- end panel content --}}
         </div>
-    </div>
+    </div>  
 </div>
 
 {{-- style tambahan --}}
