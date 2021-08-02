@@ -25,12 +25,11 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Kelas</label>
                     <div class="col-sm-10">
-                        <select wire:model="kelas" id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option value="7">7 (tujuh)</option>
-                                <option value="8">8 (delapan)</option>
-                                <option value="9">9 (sembilan)</option>
-                            </select>
+                        <select wire:ignore wire:model="kelas" id="inputState" class="form-control">
+                            <option @if ($kelas == 'VII') selected @endif value="VII">7 (tujuh)</option>
+                            <option @if ($kelas == 'VIII') selected @endif value="VIII">8 (delapan)</option>
+                            <option @if ($kelas == 'IX') selected @endif value="IX">9 (sembilan)</option>
+                        </select>
                         @error('kelas')
                             <small class="mt-2 text-danger">
                                 {{ $message }}
@@ -41,7 +40,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Tahun</label>
                     <div class="col-sm-10">
-                        <input wire:model="tahun" type="number" class="form-control" placeholder="Nomor Statik Sekolah">
+                        <input wire:model="tahun" type="text" class="form-control" placeholder="Nomor Statik Sekolah">
                         @error('tahun')
                             <small class="mt-2 text-danger">
                                 {{ $message }}
@@ -53,10 +52,9 @@
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Semester</label>
                     <div class="col-sm-10">
                         <div class="form-check">
-                            <select wire:model="semester" id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option value="genap">Semester Genap</option>
-                                <option value="ganjil">Semester Ganjil</option>
+                            <select wire:ignore wire:model="semester" id="inputState" class="form-control">
+                                <option @if ($semester == 'I') selected @endif value="I">Semester Genap</option>
+                                <option @if ($semester == 'II') selected @endif value="II">Semester Ganjil</option>
                             </select>
                             @error('semester')
                                 <small class="mt-2 text-danger">

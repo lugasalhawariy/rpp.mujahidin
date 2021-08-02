@@ -16,7 +16,7 @@ class IndexMapel extends Component
 
     protected $paginationTheme = 'bootstrap';
     protected $queryString = ['search'];
-    protected $listeners = ['mapelAdded' => 'refreshPage'];
+    protected $listeners = ['mapelAdded' => 'refreshPage', 'updateProfile' => 'refreshPage'];
 
     public $mapel_id, $nama_mapel, $kelas, $semester, $tahun;
     public function refreshPage()
@@ -67,10 +67,9 @@ class IndexMapel extends Component
 
         // VALIDASI DATA
         $this->validate([
-            'nama_mapel' => 'required|max:255',
-            'kelas' => 'required|max:2',
-            'semester' => 'required|min:1|max:10',
-            'tahun' => 'required|min:4|max:4',
+            'nama_mapel' => 'max:255',
+            'kelas' => 'max:3',
+            'tahun' => 'required|min:4',
         ]);
 
         if ($this->mapel_id) {
@@ -92,7 +91,6 @@ class IndexMapel extends Component
     {
         $this->validateOnly($data, [
             'nama_mapel' => 'min:3|max:255',
-            'tahun' => 'min:4|max:4',
         ]);
 
     }

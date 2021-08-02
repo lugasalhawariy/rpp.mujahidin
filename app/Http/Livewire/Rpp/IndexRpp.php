@@ -18,6 +18,10 @@ class IndexRpp extends Component
 
     public $mapel_id, $sekolah_id;
 
+    protected $listeners = ['updateProfile' => 'refreshPage'];
+
+    public function refreshPage(){}
+
     public function render()
     {
         // jika si user memiliki role superadmin/admin

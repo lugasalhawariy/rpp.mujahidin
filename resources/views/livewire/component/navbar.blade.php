@@ -30,16 +30,22 @@
                                 <i class="icon-submenu lnr lnr-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a data-toggle="modal" data-target="#exampleModal" href="{{ route('index.profile') }}"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                            @if (!Route::currentRouteNamed('create.rpp', 'edit.rpp'))
+                            <li>
+                                <a data-toggle="modal" data-target="#exampleModal" wire:click.prevent="editProfile"><i class="lnr lnr-user"></i> 
+                                    <span>My Profile</span>
+                                </a>
+                            </li>
+                            @endif
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
                             <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('logout') }}">
                                 @csrf
+                                <li>
                                     <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"><i class="lnr lnr-exit"></i>Logout
                                     </a>
-                                </form>
-                            </li>
+                                </li>
+                            </form>
                         </ul>
                     </li>
                     <!-- <li>
@@ -49,6 +55,8 @@
             </div>
         </div>
     </nav>
-
-    @livewire('profile.index-profile')
+    
+    @include('livewire.component.profile')
 </div>
+
+

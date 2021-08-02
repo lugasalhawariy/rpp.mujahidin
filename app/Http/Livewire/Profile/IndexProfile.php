@@ -3,10 +3,12 @@
 namespace App\Http\Livewire\Profile;
 
 use App\Models\User;
+use App\Models\Sekolah;
 use Livewire\Component;
 
 class IndexProfile extends Component
 {
+    public $user_id, $name, $username, $password, $email;
     public $user, $showName = false;
     public function mount()
     {
@@ -16,15 +18,22 @@ class IndexProfile extends Component
         }
     }
 
+    public function edit()
+    {
+        $this->user_id = auth()->user()->id;
+        $this->name = auth()->user()->name;
+        $this->email = auth()->user()->email;
+    }
+
     public function render()
     {
-        $user = $this->user;
-        return view('livewire.profile.index-profile', compact('user'))
+        $sekolah = Sekolah::latest()->get();
+        return view('livewire.profile.index-profile', compact('sekolah'))
             ->section('content');
     }
 
     public function updateUser()
     {
-        
+
     }
 }

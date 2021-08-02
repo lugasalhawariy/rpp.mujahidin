@@ -16,7 +16,7 @@ class IndexSekolah extends Component
 
     protected $paginationTheme = 'bootstrap';
     protected $queryString = ['search'];
-    protected $listeners = ['sekolahAdded' => 'refreshPage'];
+    protected $listeners = ['sekolahAdded' => 'refreshPage', 'updateProfile' => 'refreshPage'];
 
     public $nama_sekolah, $sekolah_id, $nss, $npsn, $alamat, $desa, $kecamatan, $kabupaten, $nama_kepsek, $status_sekolah, $nbm, $akreditasi;
 
@@ -39,6 +39,9 @@ class IndexSekolah extends Component
 
     public function edit($id)
     {
+        if(auth()->user()->sekolah_id !== $id){
+            abort(403);
+        }
         $this->updateMode = true;
         $sekolah = Sekolah::where('id',$id)->first();
         $this->sekolah_id = $id;

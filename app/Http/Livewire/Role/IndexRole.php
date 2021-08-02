@@ -15,7 +15,7 @@ class IndexRole extends Component
     public $show = false;
     public $search, $search_user;
     public $name, $role_id;
-    protected $listeners = ['roleAdded' => 'refreshPage'];
+    protected $listeners = ['roleAdded' => 'refreshPage', 'updateProfile' => 'refreshPage'];
 
     public function refreshPage()
     {
