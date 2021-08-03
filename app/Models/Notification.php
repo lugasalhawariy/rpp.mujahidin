@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Notifications extends Model
+class Notification extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
 
     // role_id adalah id user yang akan dikirim notif
 
@@ -15,13 +17,14 @@ class Notifications extends Model
         'title', 'body', 'user_id', 'role_id', 'expired'
     ];
 
+    protected $table = 'notifications';
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function role_id()
+    public function role()
     {
         return $this->belongsTo(Role::class);
     }

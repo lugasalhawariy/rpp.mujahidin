@@ -40,7 +40,7 @@
             <tbody align="center">
                 <td>{{ $rpp->sekolah->nama_sekolah }}</td>
                 <td>{{ $rpp->mapel->nama_mapel }}</td>
-                <td>IX/I/2020/2021</td>
+                <td>{{ $rpp->mapel->kelas }}/{{ $rpp->mapel->semester }}/{{ $rpp->mapel->tahun }}</td>
                 <td>{{ $rpp->alokasi_waktu }}</td>
             </tbody>
 		</table>

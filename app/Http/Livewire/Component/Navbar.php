@@ -5,10 +5,26 @@ namespace App\Http\Livewire\Component;
 use App\Models\User;
 use App\Models\Sekolah;
 use Livewire\Component;
-use Illuminate\Support\Facades\Crypt;
+use App\Models\Notification;
+use Spatie\Permission\Models\Role;
 
 class Navbar extends Component
 {
+    public $listeners = ['notificationAdd' => 'refresh'];
+
+    public function refresh(){}
+
+    public function mount()
+    {
+        $notif = Notification::latest()->get();
+        foreach ($notif as $item) {
+            // jika tgl expired lebih kecil dari sekarang (terlewati)
+            if($item->expired < now()){
+                $data = Notification::findOrFail($item->id);
+                $data->delete();
+            }
+        }
+    }
     // public $listener = ['updateSession' => 'refreshPage'];
     public 
         $user_id, 
@@ -27,8 +43,17 @@ class Navbar extends Component
 
     public function render()
     {
+        $role_all = Role::all();
+        if(!auth()->user()->hasAnyRole($role_all)){
+            $jumlah_pesan = 0;
+            $pesan = 0;
+        }else{
+            $jumlah_pesan = Notification::where('role_id', auth()->user()->roles->pluck('id'))->count();
+            $pesan = Notification::where('role_id', auth()->user()->roles->pluck('id'))->latest()->paginate(5);
+        }
+        
         $sekolah = Sekolah::latest()->get();
-        return view('livewire.component.navbar', compact('sekolah'));
+        return view('livewire.component.navbar', compact('sekolah', 'jumlah_pesan', 'pesan', 'role_all'));
     }
     
     public function editProfile()

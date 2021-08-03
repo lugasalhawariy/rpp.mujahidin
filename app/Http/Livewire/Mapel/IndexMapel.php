@@ -68,7 +68,6 @@ class IndexMapel extends Component
         // VALIDASI DATA
         $this->validate([
             'nama_mapel' => 'max:255',
-            'kelas' => 'max:3',
             'tahun' => 'required|min:4',
         ]);
 

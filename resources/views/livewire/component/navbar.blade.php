@@ -9,20 +9,29 @@
             </div>
             <div id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
+                    @hasanyrole($role_all)
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                             <i class="lnr lnr-alarm"></i>
-                            <span class="badge bg-danger">5</span>
+                            @if ($jumlah_pesan !== 0)
+                                <span class="badge bg-danger">{{ $jumlah_pesan }}</span>
+                            @endif
                         </a>
                         <ul class="dropdown-menu notifications">
-                            <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
-                            <li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
-                            <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
-                            <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
-                            <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
-                            <li><a href="#" class="more">See all notifications</a></li>
+                            @foreach ($pesan as $item)
+                                @if ($item->expired > now())
+                                <li>
+                                    <a href="#" class="notification-item">
+                                        <span class="dot @if ($item->user_id == auth()->user()->id) bg-warning @else bg-danger @endif"></span>
+                                        {{ $item->title }}
+                                    </a>
+                                </li>
+                                @endif
+                            @endforeach
+                            <li><a href="{{ route('index.notif') }}" class="more">See all notifications</a></li>
                         </ul>
                     </li>
+                    @endhasanyrole
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ gravatar()->avatar(auth()->user()->email) }}" class="img-circle" alt="Avatar"> 

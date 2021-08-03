@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMapelTable extends Migration
+class CreateSilabusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateMapelTable extends Migration
      */
     public function up()
     {
-        Schema::create('mapel', function (Blueprint $table) {
+        Schema::create('silabus', function (Blueprint $table) {
             $table->id();
-            $table->integer('sekolah_id')->constrained('sekolah')->onDelete('cascade');
-            $table->string('nama_mapel');
-            $table->string('kelas');
-            $table->string('semester');
-            $table->string('tahun');
+            $table->integer('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('file');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateMapelTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mapel');
+        Schema::dropIfExists('silabuses');
     }
 }

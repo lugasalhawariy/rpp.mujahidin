@@ -69,4 +69,10 @@ class AssignRolePermission extends Controller
         Artisan::call("permission:create-permission detail-$request->name");
         return redirect()->route('index.role');
     }
+
+    public function createPermissionSingle(Request $request)
+    {
+        Artisan::call("permission:create-permission $request->name");
+        return redirect()->route('index.role');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Silabus;
 use Illuminate\Support\Facades\Crypt;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -61,5 +62,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function rpp()
     {
         return $this->hasMany(RPP::class);
+    }
+
+    // user memiliki banyak silabus
+    public function silabus()
+    {
+        return $this->hasMany(Silabus::class);
     }
 }

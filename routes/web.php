@@ -12,8 +12,10 @@ use App\Http\Controllers\RppController;
 use App\Http\Livewire\Mapel\IndexMapel;
 use App\Http\Livewire\Profile\IndexProfile;
 use App\Http\Livewire\Sekolah\IndexSekolah;
+use App\Http\Livewire\Silabus\IndexSilabus;
 use App\Http\Livewire\Sekolah\CreateSekolah;
 use App\Http\Controllers\AssignRolePermission;
+use App\Http\Livewire\Notification\IndexNotification;
 
 
 // Route::get('/laravel', function () {
@@ -30,6 +32,10 @@ require __DIR__.'/auth.php';
 
 // Bisa dimasuki jika sudah login dan terverifikasi.
 Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/notification', IndexNotification::class)->name('index.notif');
+
+    Route::get('/silabus', IndexSilabus::class)->name('index.silabus');
+
     Route::get('/dashboard', Index::class)->name('dashboard');
     
     // bisa diakses jika ada izin lihat sekolah (spatie)
@@ -72,17 +78,12 @@ Route::middleware('auth', 'verified')->group(function () {
             Route::get('pdf/{id}', [RppController::class, 'cetak'])->name('pdf.rpp');
         });
     });
-    
-    // -------BELOM DIBUAT----------
-    Route::prefix('profile')->group(function (){
-        Route::get('/', IndexProfile::class)->name('index.profile');
-    });
 
-    // route superadmin (jika user login menggunakan email superadmin@gmail.com, maka...
+    // route superadmin (jika user login menggunakan email sekolahmuhammadiyahgk@gmail.com, maka...
     // User dapat mengakses route dibawah ini.
     Route::get('superadmin', function(){
         $user = User::findOrFail(auth()->user()->id);
-        if($user->email == 'superadmin@gmail.com'){
+        if($user->email == 'sekolahmuhammadiyahgk@gmail.com'){
             $user->assignRole('superadmin');
             return redirect()->route('index.role');
         }else{
@@ -103,6 +104,7 @@ Route::middleware('auth', 'verified')->group(function () {
             Route::middleware(['role:superadmin'])->group(function () {
                 Route::prefix('permission')->group(function () {
                     Route::get('create-permission/{name}', [AssignRolePermission::class, 'createPermissionGroup'])->name('create.permission');
+                    Route::get('create-permission-single/{name}', [AssignRolePermission::class, 'createPermissionSingle'])->name('create.permission');
                     Route::get('edit/{id}', [AssignRolePermission::class, 'editPermission'])->name('edit.permission');
                     Route::put('update/{id}', [AssignRolePermission::class, 'assignPermission'])->name('update.permission');
                 });

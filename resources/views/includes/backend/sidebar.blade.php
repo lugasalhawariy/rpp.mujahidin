@@ -19,13 +19,17 @@
                 <li><a href="{{ route('index.rpp') }}" class="{{ Route::currentRouteNamed('index.rpp') || Route::currentRouteNamed('create.rpp') || Route::currentRouteNamed('edit.rpp') ? 'active' : '' }}"><i class="lnr lnr-cog"></i> <span>Kelola RPP</span></a></li>
                 @endcan
 
-                @if (auth()->user()->email == 'superadmin@gmail.com')
-                    @unlessrole('superadmin')
+                @if (auth()->user()->email == 'sekolahmuhammadiyahgk@gmail.com')
+                @unlessrole('superadmin')
                     <li><a href="{{ route('setsuperadmin') }}" class="{{ Route::currentRouteNamed('index.mapel') ? 'active' : '' }}"><i class="lnr lnr-chart-bars"></i> <span>Jadikan Super Admin</span></a></li>
                     @endunlessrole
                 @endif
 
-                <li><a href="#" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+                @can('notification')
+                <li><a href="{{ route('index.notif') }}" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+                @endcan
+
+                <li><a href="{{ route('index.silabus') }}" class=""><i class="lnr lnr-chart-bars"></i> <span>Silabus</span></a></li>
             </ul>
         </nav>
     </div>
