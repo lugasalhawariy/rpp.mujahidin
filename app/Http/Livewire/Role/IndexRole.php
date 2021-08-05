@@ -15,7 +15,10 @@ class IndexRole extends Component
     public $show = false;
     public $search, $search_user;
     public $name, $role_id;
-    protected $listeners = ['roleAdded' => 'refreshPage', 'updateProfile' => 'refreshPage'];
+    protected $listeners = [
+        'roleAdded' => 'refreshPage', 
+        'updateProfile' => 'refreshPage'
+    ];
 
     public function refreshPage()
     {
@@ -60,7 +63,7 @@ class IndexRole extends Component
     {
         if($id){
             Role::where('id',$id)->delete();
-            session()->flash('message', 'Role berhasil dihapus.');
+            session()->flash('delete', 'Delete Sukses');
         }
     }
 

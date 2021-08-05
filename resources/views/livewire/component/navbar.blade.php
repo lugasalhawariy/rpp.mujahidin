@@ -1,7 +1,7 @@
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="/"><img src="{{ secure_asset('backend/assets/img/almujahid.png') }}" alt="Klorofil Logo" class="img-responsive logo"></a>
+            <a href="/"><img src="{{ asset('backend/assets/img/almujahid.png') }}" alt="Klorofil Logo" class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">
@@ -46,12 +46,11 @@
                                 </a>
                             </li>
                             @endif
-                            <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-                            <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <li>
-                                    <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"><i class="lnr lnr-exit"></i>Logout
+                                    <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        <i class="lnr lnr-exit"><span>Logout</span></i>
                                     </a>
                                 </li>
                             </form>

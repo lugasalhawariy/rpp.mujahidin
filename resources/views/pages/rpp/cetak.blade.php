@@ -151,12 +151,12 @@
         </div>
         <br>
         <div>
-            <p style="font-size: 15px; margin:40px;">{{ $rpp->sekolah->nama_kepsek }}<br>NBM 1050762</p>
+            <p style="font-size: 15px; margin:40px;">{{ $rpp->sekolah->nama_kepsek }}<br>{{ $rpp->sekolah->nbm }}</p>
         </div>
         <div>
-            <p style="font-size: 15px; margin:40px; text-align:right; margin-left:75%; margin-top:-210px; text-align:left;">Playen, 4 Januari 2021 <br>Guru Mata Pelajaran</p>
+            <p style="font-size: 15px; margin:40px; text-align:right; margin-left:75%; margin-top:-210px; text-align:left;">Playen, {{ $tanggal }} <br>Guru Mata Pelajaran</p>
             <br><br>
-            <p style="font-size: 15px; margin:40px; margin-left:75%; margin-top:-110px;">{{ $rpp->user->name }}<br>NBM 1172356</p>
+            <p style="font-size: 15px; margin:40px; margin-left:75%; margin-top:-110px;">{{ $rpp->user->name }}<br>{{ $rpp->user->nbm_guru }}</p>
         </div>
 </body>
 </html>

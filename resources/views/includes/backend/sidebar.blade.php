@@ -26,10 +26,18 @@
                 @endif
 
                 @can('notification')
-                <li><a href="{{ route('index.notif') }}" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+                <li><a href="{{ route('index.notif') }}"><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
                 @endcan
+                
+                <li><a href="{{ route('index.silabus') }}"><i class="lnr lnr-chart-bars"></i> <span>Silabus</span></a></li>
 
-                <li><a href="{{ route('index.silabus') }}" class=""><i class="lnr lnr-chart-bars"></i> <span>Silabus</span></a></li>
+                
+
+                {{-- <li>
+                    <button href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"><i class="lnr lnr-exit"></i>Logout
+                    </button>
+                </li> --}}
+
             </ul>
         </nav>
     </div>

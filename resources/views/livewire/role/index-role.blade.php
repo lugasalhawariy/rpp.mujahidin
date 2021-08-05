@@ -15,8 +15,8 @@
                         @else
                             <button wire:click="$set('show', true)" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-plus-circle"></i> Tambah Role</button>
                         @endif
-                        <a class='btn btn-success' href='#'><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a>
-                        <a class='btn btn-danger' href='#'><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
+                        {{-- <a class='btn btn-success' href='#'><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a>
+                        <a class='btn btn-danger' href='#'><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a> --}}
                     </div>
                     {{-- end tombol panel for button --}}
                     <hr>
@@ -43,7 +43,13 @@
                         @if(session('failed'))
                             <div class="alert alert-danger alert-dismissible">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Failed!</strong> {{ session('message') }}
+                                <strong>Failed!</strong> {{ session('failed') }}
+                            </div>
+                        @endif
+                        @if(session('delete'))
+                            <div class="alert alert-warning alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Warning!</strong> {{ session('delete') }}
                             </div>
                         @endif
                         {{-- table --}}
@@ -76,7 +82,7 @@
                                     </td>
 
                                     <td>
-                                        <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
+                                        <button confirm wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
                                             <i class="lnr lnr-trash"></i>
                                         </button>
                                     </td>
@@ -143,14 +149,22 @@
                                         </td>
                                         @else
                                         <td>
-                                            anda tidak memiliki akses
+                                            <small>
+                                                <i class="text-danger">
+                                                    anda tidak memiliki akses
+                                                </i>
+                                            </small>
                                         </td>
                                         @endif
                                         
                                         <td>
                                             @hasanyrole('superadmin|admin')
                                             @if ($item->hasRole('superadmin'))
-                                                Tidak dapat akses
+                                                <small>
+                                                    <i class="text-danger">
+                                                        anda tidak memiliki akses
+                                                    </i>
+                                                </small>
                                             @else
                                                 @if ($item->email_verified_at !== null)
                                                 <button wire:click="blokir({{ $item->id }})" class="btn btn-danger badge rounded-pill">

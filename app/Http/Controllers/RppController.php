@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use Carbon\Carbon;
 use App\Models\RPP;
 use App\Models\Mapel;
 use App\Models\Sekolah;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\RppRequest;
-
-use PDF;
 
 class RppController extends Controller
 {
@@ -82,7 +83,8 @@ class RppController extends Controller
     public function cetak($id)
     {
         $rpp = RPP::findOrFail($id);
-        $pdf = PDF::loadview('pages.rpp.cetak', ['rpp' => $rpp]);
-        return $pdf->download('rpp.pdf'); 
+        $tanggal = Carbon::parse($rpp->created_at)->formatLocalized('%d %B %Y');
+        $pdf = PDF::loadview('pages.rpp.cetak', ['rpp' => $rpp, 'tanggal' => $tanggal]);
+        return $pdf->download('RPP-'.$rpp->user->name.'-'.$rpp->user->nbm_guru.'.pdf'); 
     }
 }

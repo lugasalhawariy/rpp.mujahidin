@@ -26,7 +26,7 @@
                                     @foreach ($roles as $value)
                                     @if ($value->name !== 'superadmin')
                                         <div class="col-md-4">
-                                            <input type="checkbox" {{ $data->roles()->find($value->id) ? "checked" : "" }} value="{{ $value->id }}" name="roles[]" class="w-4 h-4 text-green-500 form-checkbox">
+                                            <input type="radio" {{ $data->roles()->find($value->id) ? "checked" : "" }} value="{{ $value->id }}" name="roles[]" class="w-4 h-4 text-green-500 form-checkbox">
                                             <span class="ml-3 text-sm">{{ $value->name }}</span>
                                         </div>
                                     @endif

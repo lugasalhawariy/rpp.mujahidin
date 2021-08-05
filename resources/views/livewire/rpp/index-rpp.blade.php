@@ -10,8 +10,8 @@
                     {{-- tombol --}}
                     <div class="row">
                         <a class='btn btn-info' href='{{ route('create.rpp') }}'><i class="lnr lnr-plus-circle"></i> Tambah RPP</a>
-                        <a class='btn btn-success' href='#'><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a>
-                        <a class='btn btn-danger' href='#'><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
+                        {{-- <a class='btn btn-success' href='#'><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a>
+                        <a class='btn btn-danger' href='#'><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a> --}}
                     </div>
                     {{-- end tombol panel for button --}}
                     <hr>
