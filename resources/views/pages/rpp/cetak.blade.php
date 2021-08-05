@@ -144,6 +144,19 @@
                 </tr>
             </tbody>
         </table>
-	</div>
+
+        <!-- TTD -->
+        <div>
+            <p style="font-size: 15px; margin:40px;">Mengetahui,<br>Kepala Sekolah</p>
+        </div>
+        <br>
+        <div>
+            <p style="font-size: 15px; margin:40px;">{{ $rpp->sekolah->nama_kepsek }}<br>NBM 1050762</p>
+        </div>
+        <div>
+            <p style="font-size: 15px; margin:40px; text-align:right; margin-left:75%; margin-top:-210px; text-align:left;">Playen, 4 Januari 2021 <br>Guru Mata Pelajaran</p>
+            <br><br>
+            <p style="font-size: 15px; margin:40px; margin-left:75%; margin-top:-110px;">{{ $rpp->user->name }}<br>NBM 1172356</p>
+        </div>
 </body>
 </html>
