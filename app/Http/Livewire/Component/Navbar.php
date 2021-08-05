@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Role;
 
 class Navbar extends Component
 {
-    public $listeners = ['notificationAdd' => 'refresh'];
+    public $listeners = ['notificationAdd' => 'refresh', 'updateProfile' => 'refresh'];
 
     public function refresh(){}
 
@@ -74,6 +74,7 @@ class Navbar extends Component
     public function update()
     {
         $data = User::findOrFail($this->user_id);
+
         $data->update([
             'name' => $this->name,
             'email' => $this->email,
@@ -86,6 +87,7 @@ class Navbar extends Component
             'alamat' => $this->alamat,
             'riwayat_pendidikan' => $this->riwayat_pendidikan,
         ]);
+
 
         $this->emit('updateProfile');
         session()->flash('message', 'Profile diperbaharui.');

@@ -40,6 +40,9 @@ class IndexSilabus extends Component
     public function delete($id)
     {
         $file = Silabus::findOrFail($id);
+        if($file->user_id !== auth()->user()->id){
+            abort(403);
+        }
         // $file->delete();
         $data = $file->file;
 
@@ -56,7 +59,7 @@ class IndexSilabus extends Component
     public function addItem()
     {
         $data = $this->validate([
-            'file' => 'required|mimes:pdf'
+            'file' => 'required|mimes:pdf,docx'
         ]);
 
         // arahkan filename ke directory

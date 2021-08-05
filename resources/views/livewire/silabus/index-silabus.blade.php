@@ -35,9 +35,13 @@
                                 <td>{{ $item->user->name }}</td>
                                 <td>{{ $item->file }}</td>
                                 <td>
-                                    <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
-                                        <i class="lnr lnr-trash"></i>
-                                    </button>
+                                    @if ($item->user_id == auth()->user()->id)
+                                        <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
+                                            <i class="lnr lnr-trash"></i>
+                                        </button>
+                                    @else
+                                        <span><small class="text-danger">tidak ada akses</small></span>
+                                    @endif
                                 </td>
                                 <td>
                                     <button wire:click="download({{ $item->id }})" class="badge rounded-pill bg-dark">

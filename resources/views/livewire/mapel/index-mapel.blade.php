@@ -1,7 +1,8 @@
 <div>
     <div class="main-content">
         <div class="container-fluid">
-            {{-- panel/card for button --}}
+            @can('tambah-mapel')
+                {{-- panel/card for button --}}
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h1 class="panel-title" style="color:black; margin-top:7px; font-family:tahoma; "></h1>
@@ -20,6 +21,7 @@
                 <hr>
             </div>
             {{-- end panel/card button --}}
+            @endcan
 
             @if ($show)
                 @livewire('mapel.create-mapel')

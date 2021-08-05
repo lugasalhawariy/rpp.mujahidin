@@ -86,7 +86,7 @@
                                 {{ $message }}
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="inputPassword4">BENTUK</label>
                             <input wire:model="bentuk" type="text" class="form-control" placeholder="Isikan alokasi waktu dengan benar">
                             @error('bentuk')

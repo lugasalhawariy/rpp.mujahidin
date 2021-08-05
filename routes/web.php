@@ -32,7 +32,9 @@ require __DIR__.'/auth.php';
 
 // Bisa dimasuki jika sudah login dan terverifikasi.
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/notification', IndexNotification::class)->name('index.notif');
+    Route::group(['middleware' => ['can:notification']], function () {
+        Route::get('/notification', IndexNotification::class)->name('index.notif');
+    });
 
     Route::get('/silabus', IndexSilabus::class)->name('index.silabus');
 

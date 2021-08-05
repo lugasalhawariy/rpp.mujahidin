@@ -118,7 +118,8 @@
                         {{-- tbody table --}}
                         <tbody>
                             @foreach ($users as $index => $item)
-                                @if ($item->sekolah_id == auth()->user()->sekolah_id)
+                                {{-- jika user satu sekolah, maka bisa ngedit / dia seorang superadmin --}}
+                                @if ($item->sekolah_id == auth()->user()->sekolah_id || auth()->user()->hasRole('superadmin'))
                                     <tr class="text-center">
                                         <td scope="row">{{ $index + 1 }}</td>
                                         <td>{{ $item->name }}</td>

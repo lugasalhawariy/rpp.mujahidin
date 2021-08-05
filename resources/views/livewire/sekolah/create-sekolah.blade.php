@@ -16,7 +16,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">NSS</label>
                     <div class="col-sm-10">
-                        <input wire:model="nss" type="text" class="form-control" placeholder="Nomor Statik Sekolah">
+                        <input wire:model="nss" type="number" class="form-control" placeholder="Nomor Statik Sekolah">
                         @error('nss')
                             <small class="mt-2 text-danger">
                                 {{ $message }}
@@ -27,7 +27,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">NPSN</label>
                     <div class="col-sm-10">
-                        <input wire:model="npsn" type="text" class="form-control" placeholder="Nomor Pokok Sekolah Nasional">
+                        <input wire:model="npsn" type="number" class="form-control" placeholder="Nomor Pokok Sekolah Nasional">
                         @error('npsn')
                             <small class="mt-2 text-danger">
                                 {{ $message }}
@@ -68,7 +68,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">NBM</label>
                     <div class="col-sm-10">
-                        <input wire:model="nbm" type="text" class="form-control" id="inputPassword3" placeholder="Nomor Baku Muhammadiyah">
+                        <input wire:model="nbm" type="number" class="form-control" id="inputPassword3" placeholder="Nomor Baku Muhammadiyah">
                         @error('nbm')
                             <small class="mt-2 text-danger">
                                 {{ $message }}

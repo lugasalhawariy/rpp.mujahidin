@@ -2,6 +2,7 @@
     <div class="main-content">
         <div class="container-fluid">
             {{-- panel/card for button --}}
+            @can('tambah-sekolah')
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h1 class="panel-title" style="color:black; margin-top:7px; font-family:tahoma; "></h1>
@@ -19,6 +20,7 @@
                 {{-- end tombol panel for button --}}
                 <hr>
             </div>
+            @endcan
             {{-- end panel/card button --}}
 
             @if ($show)

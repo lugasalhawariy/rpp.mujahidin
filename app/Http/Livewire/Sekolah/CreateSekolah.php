@@ -15,14 +15,14 @@ class CreateSekolah extends Component
     {
         $this->validateOnly($data, [
             'nama_sekolah' => 'min:3|max:255',
-            'nss' => 'min:20|max:20',
-            'npsn' => 'min:20|min:20',
+            'nss' => 'min:8|max:20',
+            'npsn' => 'min:8|max:20',
             'alamat' => 'min:5|max:255',
             'desa' => 'min:5|max:50',
             'kecamatan' => 'min:5|max:50',
             'kabupaten' => 'min:5|max:50',
             'nama_kepsek' => 'min:5|max:255',
-            'nbm' => 'min:10|max:10',
+            'nbm' => 'min:7|max:10',
         ]);
     }
 
@@ -30,12 +30,12 @@ class CreateSekolah extends Component
     protected $messages = [
         'nama_sekolah.min' => 'Nama sekolah tidak boleh kurang dari 3 karakter.',
         'nama_sekolah.max' => 'Nama sekolah tidak boleh lebih dari 255 karakter.',
-        'nss.min' => 'NSS harus 20 karakter.',
-        'nss.max' => 'NSS harus 20 karakter.',
-        'npsn.min' => 'NPSN harus 20 karakter.',
-        'npsn.max' => 'NPSN harus 20 karakter.',
-        'nbm.min' => 'NBM harus 10 karakter.',
-        'nbm.max' => 'NBM harus 10 karakter.',
+        'nss.min' => 'NSS tidak boleh kurang dari 8 karakter.',
+        'nss.max' => 'NSS tidak boleh lebih dari 20 karakter.',
+        'npsn.min' => 'NPSN tidak boleh kurang dari 8 karakter.',
+        'npsn.max' => 'NPSN tidak boleh lebih dari 20 karakter.',
+        'nbm.min' => 'NBM tidak boleh kurang dari 7 karakter.',
+        'nbm.max' => 'NBM tidak boleh lebih dari 10 karakter.',
     ];
 
 
@@ -45,15 +45,15 @@ class CreateSekolah extends Component
         // VALIDASI DATA
         $this->validate([
             'nama_sekolah' => 'required|max:255',
-            'nss' => 'required|min:20|max:20',
-            'npsn' => 'required|max:20|min:20',
+            'nss' => 'required|min:8|max:10',
+            'npsn' => 'required|min:8|max:10',
             'alamat' => 'required|min:5|max:255',
             'desa' => 'required|min:3|max:50',
             'kecamatan' => 'required|min:3|max:50',
             'nama_kepsek' => 'required|min:3|max:50',
             'kabupaten' => 'required|min:3|max:50',
             'status_sekolah' => 'required',
-            'nbm' => 'required|min:10|max:10',
+            'nbm' => 'required|min:7|max:10',
 
         ]);
 

@@ -45,6 +45,7 @@
             </tbody>
 		</table>
 
+        {{-- start - tujuan pembelajaran --}}
         <p style="font-size: 15px; font-weight:bold; margin:10px;">A.Tujuan Pembelajaran</p>
         <table class="table table-bordered">
             <thead>
@@ -70,6 +71,77 @@
                 <td style="text-align: justify; padding:15px; margin:20px;">
                     {!! $rpp->tujuan !!}
                 </td>
+            </tbody>
+        </table>
+        {{-- end - tujuan pembelajaran --}}
+
+        {{-- start - materi --}}
+        <p>B. Materi : {!! $rpp->materi_rpp !!}</p>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color:lightgray;">
+                    <th scope="col">
+                        C.
+                    </th>
+                    <th scope="col">
+                        PENDEKATAN
+                    </th>
+                    <th scope="col">
+                        <center>STRATEGI</center>
+                    </th>
+                    <th scope="col">
+                        <center>METODE</center>
+                    </th>
+                </tr>
+            </thead>
+            <tbody align="center">
+                <td></td>
+                <td>{{ $rpp->pendekatan }}</td>
+                <td>{{ $rpp->strategi }}</td>
+                <td>{{ $rpp->metode_rpp }}</td>
+            </tbody>
+        </table>
+        {{-- end - materi --}}
+
+        <table class="table table-bordered" style="padding: 0px; margin:0px;">
+            <thead>
+                <tr style="background-color:lightgray;">
+                    <th scope="col">
+                        D. Langkah - Langkah Pembelajaran
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {!! $rpp->langkah_rpp !!}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p style="font-size: 15px; font-weight:bold; margin:10px;">E.Penilaian</p>
+        <table class="table table-bordered" style="padding: 0px; margin:0px;">
+            <thead>
+                <tr style="background-color:lightgray;">
+                    <th scope="col">
+                        <center>Teknik</center>
+                    </th>
+                    <th scope="col">
+                        <center>Alat</center>
+                    </th>
+                    <th scope="col">
+                        <center>Bentuk</center>
+                    </th>
+                </tr>
+            </thead>
+            <tbody align="center">
+                <tr>
+                    <td>{{ $rpp->teknik_materi }}</td>
+                    <td>{{ $rpp->alat }}</td>
+                    <td>{{ $rpp->bentuk }}</td>
+                </tr>
             </tbody>
         </table>
 	</div>
