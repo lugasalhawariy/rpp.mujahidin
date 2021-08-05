@@ -9,18 +9,18 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/css/style2.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('frontend/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('frontend/css/style2.css') }}" rel="stylesheet">
     
     <body>
 
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
-        <a href="/" class="logo"><img src="{{ asset('frontend/img/aaaa.png') }}" style="width: auto;"></a>
+        <a href="/" class="logo"><img src="{{ secure_asset('frontend/img/aaaa.png') }}" style="width: auto;"></a>
         <nav id="navbar" class="navbar">
             <ul>
             <a href="#">Home</a>
@@ -39,7 +39,7 @@
             <div><a href="{{ route('index.rpp') }}" class="rounded btn btn-success rounded-pill">Buat RPP</a></div>
             </div>
             <div class="order-1 col-lg-6 order-lg-2 hero-img">
-            <img src="{{ asset('frontend/img/hero-img.png') }}" class="img-fluid" alt="">
+            <img src="{{ secure_asset('frontend/img/hero-img.png') }}" class="img-fluid" alt="">
             </div>
         </div>
         </div>
@@ -89,7 +89,7 @@
         <div class="container">
             <div class="row">
             <div class="gambar">
-            <img src="{{ asset('frontend/img/logo2.png') }}" class="mx-auto d-block" style="width:3%">
+            <img src="{{ secure_asset('frontend/img/logo2.png') }}" class="mx-auto d-block" style="width:3%">
             <h3 align="center">STYLEWEB</h3>
             <p align="center">Hak cipta &copy; 2021 E - RPP Sekolah Muhammadiyah.Semua Hak Dilindungi.</p>
             <p align="center">Dikelola oleh tim StyleWeb Universitas Ahmad Dahlan</p>
@@ -102,15 +102,15 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/purecounter/purecounter.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ secure_asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ secure_asset('frontend/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ secure_asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ secure_asset('frontend/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ secure_asset('frontend/vendor/purecounter/purecounter.js') }}"></script>
+    <script src="{{ secure_asset('frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="{{ secure_asset('frontend/js/main.js') }}"></script>
 
     </body>
 
