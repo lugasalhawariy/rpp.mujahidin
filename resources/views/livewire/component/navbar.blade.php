@@ -5,14 +5,14 @@
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">
-                <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+                <button type="button" class="btn-toggle-fullwidth"><i class="fas fa-arrow-circle-left"></i></button>
             </div>
             <div id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
                     @hasanyrole($role_all)
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                            <i class="lnr lnr-alarm"></i>
+                            <i class="far fa-bell"></i>
                             @if ($jumlah_pesan !== 0)
                                 <span class="badge bg-danger">{{ $jumlah_pesan }}</span>
                             @endif

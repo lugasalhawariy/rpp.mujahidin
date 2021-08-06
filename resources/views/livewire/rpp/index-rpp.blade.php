@@ -9,7 +9,7 @@
                     </div>
                     {{-- tombol --}}
                     <div class="row">
-                        <a class='btn btn-info' href='{{ route('create.rpp') }}'><i class="lnr lnr-plus-circle"></i> Tambah RPP</a>
+                        <a class='btn btn-info' href='{{ route('create.rpp') }}'><i class="fas fa-plus-square"></i> Tambah RPP</a>
                         {{-- <a class='btn btn-success' href='#'><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a>
                         <a class='btn btn-danger' href='#'><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a> --}}
                     </div>
@@ -116,7 +116,7 @@
                                         @can('hapus-rpp')
                                         <td>
                                             <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
-                                                <i class="lnr lnr-trash"></i>
+                                                <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
                                         @endcan

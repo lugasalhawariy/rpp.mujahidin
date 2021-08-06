@@ -2,9 +2,9 @@
     <div class="sidebar-scroll">
         <nav>
             <ul class="nav">
-                <li><a href="{{ route('dashboard') }}"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                <li><a href="{{ route('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
                 @if(auth()->user()->can('kelola-user') || auth()->user()->email == 'superadmin@gmail.com')
-                <li><a href="{{ route('index.role') }}" class="{{ Route::currentRouteNamed('index.role') ? 'active' : '' }}"><i class="lnr lnr-user"></i> <span>Kelola Izin</span></a></li>
+                <li><a href="{{ route('index.role') }}" class="{{ Route::currentRouteNamed('index.role') ? 'active' : '' }}"><i class="fas fa-users-cog"></i> <span>Kelola Izin</span></a></li>
                 @endif
                 @can('lihat-sekolah')
                 {{-- link to sekolah --}}
@@ -16,7 +16,7 @@
                 @endcan
 
                 @can('lihat-rpp')
-                <li><a href="{{ route('index.rpp') }}" class="{{ Route::currentRouteNamed('index.rpp') || Route::currentRouteNamed('create.rpp') || Route::currentRouteNamed('edit.rpp') ? 'active' : '' }}"><i class="lnr lnr-cog"></i> <span>Kelola RPP</span></a></li>
+                <li><a href="{{ route('index.rpp') }}" class="{{ Route::currentRouteNamed('index.rpp') || Route::currentRouteNamed('create.rpp') || Route::currentRouteNamed('edit.rpp') ? 'active' : '' }}"><i class="fas fa-file-alt"></i> <span>Kelola RPP</span></a></li>
                 @endcan
 
                 @if (auth()->user()->email == 'sekolahmuhammadiyahgk@gmail.com')
@@ -25,10 +25,10 @@
                     @endunlessrole
                 @endif
 
-                <li><a href="{{ route('index.notif') }}"><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
+                <li><a href="{{ route('index.notif') }}"><i class="far fa-bell"></i> <span>Notifications</span></a></li>
                 
                 <li><a href="{{ route('index.silabus') }}"><i class="fas fa-file-upload"></i> <span>Silabus</span></a></li>
-                <li><a href="{{ route('index.trash') }}"><i class="lnr lnr-trash"></i> <span>Tempat Sampah</span></a></li>
+                <li><a href="{{ route('index.trash') }}"><i class="fas fa-trash-alt"></i> <span>Tempat Sampah</span></a></li>
 
                 {{-- <li>
                     <button href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"><i class="lnr lnr-exit"></i>Logout

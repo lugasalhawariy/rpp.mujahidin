@@ -10,9 +10,9 @@
                 {{-- tombol --}}
                 <div class="row">
                     @if ($show)
-                        <button wire:click="$set('show', false)" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-circle-minus"></i> Cancel</button>
+                        <button wire:click="$set('show', false)" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="fas fa-minus-square"></i> Cancel</button>
                     @else
-                        <button wire:click="$set('show', true)" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-plus-circle"></i> Tambah Sekolah</button>
+                        <button wire:click="$set('show', true)" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-square"></i> Tambah Sekolah</button>
                     @endif
                     {{-- <a class='btn btn-success' href='#'><i class="fa fa-file-excel-o" aria-hidden="true"></i> Download Excel</a>
                     <a class='btn btn-danger' href='#'><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a> --}}
@@ -98,7 +98,7 @@
                                 @if ($item->id == auth()->user()->sekolah_id)
                                 <td>
                                     <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
-                                        <i class="lnr lnr-trash"></i>
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
                                 @else

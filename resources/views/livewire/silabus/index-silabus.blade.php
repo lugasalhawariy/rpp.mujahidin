@@ -37,7 +37,7 @@
                                 <td>
                                     @if ($item->user_id == auth()->user()->id)
                                         <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
-                                            <i class="lnr lnr-trash"></i>
+                                            <i class="fas fa-trash-alt"></i>
                                         </button>
                                     @else
                                         <span><small class="text-danger">tidak ada akses</small></span>
@@ -45,7 +45,7 @@
                                 </td>
                                 <td>
                                     <button wire:click="download({{ $item->id }})" class="badge rounded-pill bg-dark">
-                                        <i class="lnr lnr-download"></i>
+                                        <i class="fas fa-file-download"></i>
                                     </button>
                                 </td>
                             </tr>
