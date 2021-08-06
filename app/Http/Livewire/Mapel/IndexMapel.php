@@ -27,6 +27,7 @@ class IndexMapel extends Component
     
     public function render()
     {
+        // jika belom setting sekolah, maka admin tidak dapat akses ke mapel
         if(auth()->user()->sekolah_id == null){
             abort(403);
         }

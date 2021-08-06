@@ -36,7 +36,7 @@ class CreateRppTable extends Migration
             $table->text('tujuan')->nullable();
             $table->text('materi_rpp')->nullable();
             $table->text('langkah_rpp')->nullable();
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

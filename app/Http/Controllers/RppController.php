@@ -59,6 +59,29 @@ class RppController extends Controller
     public function update(RppRequest $request, $id)
     {
         $data = RPP::findOrFail($id);
+
+        // validasi status
+        if(
+            $request->alokasi_waktu !== null && 
+            $request->pendekatan !== null &&
+            $request->strategi !== null &&
+            $request->metode_rpp !== null &&
+            $request->teknik_materi !== null &&
+            $request->teknik_penilaian !== null &&
+            $request->alat !== null &&
+            $request->bentuk !== null &&
+            $request->kompetensi_dasar !== null &&
+            $request->ipk !== null &&
+            $request->tujuan !== null &&
+            $request->materi_rpp !== null &&
+            $request->langkah_rpp !== null
+            )
+        {
+            $status = 'success';
+        }else{
+            $status = 'progress';
+        }
+
         $data->update([
             'user_id' => auth()->user()->id,
             'sekolah_id' => auth()->user()->sekolah_id,
@@ -75,7 +98,8 @@ class RppController extends Controller
             'ipk' => $request->ipk,
             'tujuan' => $request->tujuan,
             'materi_rpp' => $request->materi_rpp,
-            'langkah_rpp' => $request->langkah_rpp
+            'langkah_rpp' => $request->langkah_rpp,
+            'status' => $status
         ]);
         return redirect()->route('index.rpp');
     }

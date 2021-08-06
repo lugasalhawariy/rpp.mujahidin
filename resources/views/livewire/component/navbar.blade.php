@@ -1,7 +1,7 @@
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="brand">
-            <a href="/"><img src="{{ asset('backend/assets/img/almujahid.png') }}" alt="Klorofil Logo" class="img-responsive logo"></a>
+            <a href="/"><img src="{{ secure_asset('backend/assets/img/almujahid.png') }}" alt="Klorofil Logo" class="img-responsive logo"></a>
         </div>
         <div class="container-fluid">
             <div class="navbar-btn">

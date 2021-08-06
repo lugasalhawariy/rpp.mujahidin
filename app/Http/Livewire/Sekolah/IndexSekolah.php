@@ -4,7 +4,9 @@ namespace App\Http\Livewire\Sekolah;
 
 use App\Models\Sekolah;
 use Livewire\Component;
+use App\Models\Notification;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
 
 
 class IndexSekolah extends Component
@@ -61,8 +63,18 @@ class IndexSekolah extends Component
     public function delete($id)
     {
         if($id){
-            Sekolah::where('id',$id)->delete();
+            $sekolah = Sekolah::findOrFail($id);
             session()->flash('message', 'Data sekolah berhasil dihapus.');
+            // cari id superadmin. (login buat pesan admin tertentu telah menghapus data sekolah)
+            $superadmin = Role::where('name', 'superadmin')->first();
+            Notification::create([
+                'title' => 'hapus data sekolah',
+                'body' => 'Saya telah menghapus data sekolah '. $sekolah->nama_sekolah,
+                'user_id' => auth()->user()->id,
+                'role_id' => $superadmin->id,
+                'expired' => now()->addDays(7)
+            ]);
+            $sekolah->delete();
         }
     }
 
@@ -71,15 +83,15 @@ class IndexSekolah extends Component
         // VALIDASI DATA
         $this->validate([
             'nama_sekolah' => 'required|max:255',
-            'nss' => 'required|min:20|max:20',
-            'npsn' => 'required|max:20|min:20',
+            'nss' => 'required|min:8|max:10',
+            'npsn' => 'required|min:8|max:10',
             'alamat' => 'required|min:5|max:255',
             'desa' => 'required|min:3|max:50',
             'kecamatan' => 'required|min:3|max:50',
             'nama_kepsek' => 'required|min:3|max:50',
             'kabupaten' => 'required|min:3|max:50',
             'status_sekolah' => 'required',
-            'nbm' => 'required|min:10|max:10',
+            'nbm' => 'required|min:7|max:10',
         ]);
 
         if ($this->sekolah_id) {
@@ -108,14 +120,14 @@ class IndexSekolah extends Component
     {
         $this->validateOnly($data, [
             'nama_sekolah' => 'min:3|max:255',
-            'nss' => 'min:20|max:20',
-            'npsn' => 'min:20|min:20',
+            'nss' => 'min:8|max:20',
+            'npsn' => 'min:8|max:20',
             'alamat' => 'min:5|max:255',
             'desa' => 'min:5|max:50',
             'kecamatan' => 'min:5|max:50',
             'kabupaten' => 'min:5|max:50',
             'nama_kepsek' => 'min:5|max:255',
-            'nbm' => 'min:10|max:10',
+            'nbm' => 'min:7|max:10',
         ]);
 
     }

@@ -8,11 +8,11 @@
                 @endif
                 @can('lihat-sekolah')
                 {{-- link to sekolah --}}
-                <li><a href="{{ route('index.sekolah') }}" class="{{ Route::currentRouteNamed('index.sekolah') ? 'active' : '' }}"><i class="lnr lnr-code"></i> <span>Sekolah</span></a></li>
+                <li><a href="{{ route('index.sekolah') }}" class="{{ Route::currentRouteNamed('index.sekolah') ? 'active' : '' }}"><i class="fas fa-school"></i> <span>Sekolah</span></a></li>
                 @endcan
                 @can('lihat-mapel')    
                 {{-- link to mapel --}}
-                <li><a href="{{ route('index.mapel') }}" class="{{ Route::currentRouteNamed('index.mapel') ? 'active' : '' }}"><i class="lnr lnr-chart-bars"></i> <span>Mata Pelajaran</span></a></li>
+                <li><a href="{{ route('index.mapel') }}" class="{{ Route::currentRouteNamed('index.mapel') ? 'active' : '' }}"><i class="fas fa-book"></i> <span>Mata Pelajaran</span></a></li>
                 @endcan
 
                 @can('lihat-rpp')
@@ -25,13 +25,10 @@
                     @endunlessrole
                 @endif
 
-                @can('notification')
                 <li><a href="{{ route('index.notif') }}"><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
-                @endcan
                 
-                <li><a href="{{ route('index.silabus') }}"><i class="lnr lnr-chart-bars"></i> <span>Silabus</span></a></li>
-
-                
+                <li><a href="{{ route('index.silabus') }}"><i class="fas fa-file-upload"></i> <span>Silabus</span></a></li>
+                <li><a href="{{ route('index.trash') }}"><i class="lnr lnr-trash"></i> <span>Tempat Sampah</span></a></li>
 
                 {{-- <li>
                     <button href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"><i class="lnr lnr-exit"></i>Logout

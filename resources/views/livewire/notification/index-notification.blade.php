@@ -1,6 +1,7 @@
 <div>
     <div class="main-content">
         <div class="container-fluid">
+            @can('notification')
             <div class="panel panel-info">
                 <div class="panel-body">
                     @if ($show)
@@ -9,11 +10,13 @@
                         <button wire:click="$set('show', true)" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="lnr lnr-plus-circle"></i></button>
                     @endif
                 </div>
+                
                 <hr>
                 @if ($show)
                     @include('livewire.notification.create-notification')
                 @endif
             </div>
+            @endcan
             <div class="panel panel-info">
                 <div class="panel-heading">
                     Your Message

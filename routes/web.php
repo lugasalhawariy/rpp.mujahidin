@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\User;
-use App\Http\Livewire\Test\Index;
+use App\Http\Livewire\Rpp\Trash;
 // use App\Http\Livewire\Test\Create;
+use App\Http\Livewire\Test\Index;
 use App\Http\Livewire\Rpp\EditRpp;
 use App\Http\Livewire\Rpp\IndexRpp;
 use App\Http\Livewire\Rpp\CreateRpp;
@@ -32,9 +33,7 @@ require __DIR__.'/auth.php';
 
 // Bisa dimasuki jika sudah login dan terverifikasi.
 Route::middleware('auth', 'verified')->group(function () {
-    Route::group(['middleware' => ['can:notification']], function () {
-        Route::get('/notification', IndexNotification::class)->name('index.notif');
-    });
+    Route::get('/notification', IndexNotification::class)->name('index.notif');
 
     Route::get('/silabus', IndexSilabus::class)->name('index.silabus');
 
@@ -52,6 +51,8 @@ Route::middleware('auth', 'verified')->group(function () {
 
     // Route table RPP
     Route::prefix('rpp')->group(function () {
+
+        Route::get('/trash', Trash::class)->name('index.trash');
 
         // bisa dimasuki jika ada izin lihat rpp
         Route::group(['middleware' => ['permission:lihat-rpp']], function () {
