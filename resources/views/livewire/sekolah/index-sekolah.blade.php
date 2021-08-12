@@ -95,17 +95,11 @@
                                 @endcan
 
                                 @can('hapus-sekolah')
-                                @if ($item->id == auth()->user()->sekolah_id)
                                 <td>
                                     <button wire:click="delete({{ $item->id }})" class="badge rounded-pill bg-danger">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
-                                @else
-                                <td>
-                                    <i class="text-danger">tidak dapat akses</i>
-                                </td>
-                                @endif
                                 @endcan
                             </tr>
                             @endforeach

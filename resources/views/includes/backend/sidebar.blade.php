@@ -28,7 +28,10 @@
                 <li><a href="{{ route('index.notif') }}"><i class="far fa-bell"></i> <span>Notifications</span></a></li>
                 
                 <li><a href="{{ route('index.silabus') }}"><i class="fas fa-file-upload"></i> <span>Silabus</span></a></li>
+
+                @hasrole('guru')
                 <li><a href="{{ route('index.trash') }}"><i class="fas fa-trash-alt"></i> <span>Tempat Sampah</span></a></li>
+                @endhasrole
 
                 {{-- <li>
                     <button href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();"><i class="lnr lnr-exit"></i>Logout

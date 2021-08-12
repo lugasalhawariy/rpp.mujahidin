@@ -5,9 +5,9 @@
             <div class="panel panel-info">
                 <div class="panel-body">
                     @if ($show)
-                        <button wire:click="$set('show', false)" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="fas fa-minus-square"></i></button>
+                        <button wire:click="$set('show', false)" class="btn btn-warning" data-toggle="modal" data-target="#myModal"><i class="fas fa-minus-square"></i> Cancel</button>
                     @else
-                        <button wire:click="$set('show', true)" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-square"></i></button>
+                        <button wire:click="$set('show', true)" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-square"></i> Tambah Pesan</button>
                     @endif
                 </div>
                 

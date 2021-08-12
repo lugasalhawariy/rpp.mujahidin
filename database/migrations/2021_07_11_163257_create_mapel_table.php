@@ -15,7 +15,7 @@ class CreateMapelTable extends Migration
     {
         Schema::create('mapel', function (Blueprint $table) {
             $table->id();
-            $table->integer('sekolah_id')->constrained('sekolah')->onDelete('cascade');
+            $table->foreignId('sekolah_id')->constrained('sekolah')->onDelete('cascade');
             $table->string('nama_mapel');
             $table->string('kelas');
             $table->string('semester');
