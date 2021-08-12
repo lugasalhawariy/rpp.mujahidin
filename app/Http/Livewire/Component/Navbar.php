@@ -62,7 +62,7 @@ class Navbar extends Component
         $this->name = auth()->user()->name;
         $this->email = auth()->user()->email;
         $this->username = auth()->user()->username;
-        $this->sekolah_id = auth()->user()->sekolah_id;
+        $this->sekolah_id = auth()->user()->sekolah_id ?? null;
         $this->no_telp = auth()->user()->no_telp;
         $this->tgl_lahir = auth()->user()->tgl_lahir;
         $this->nbm_guru = auth()->user()->nbm_guru;

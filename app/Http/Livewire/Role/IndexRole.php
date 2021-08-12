@@ -36,7 +36,7 @@ class IndexRole extends Component
     {
         // dapatkan user yang memiliki role guru (kondisi untuk admin)
         if(auth()->user()->hasRole('admin')){
-            $users = User::role('guru')->paginate(10);
+            $users = User::where('sekolah_id', auth()->user()->sekolah_id)->paginate(10);
         }
         else{
             $users = User::latest()->paginate(10);
@@ -47,9 +47,9 @@ class IndexRole extends Component
 
         // kondisi jika ada input search/pencarian
         if($this->search !== null || $this->search_user !== null){
-            $roles = Role::where('name', 'like', '%' . $this->search . '%')->latest()->paginate(10);
+            $roles = Role::where('name', 'like', '%' . $this->search . '%')->andWhere('sekolah_id', auth()->user()->sekolah_id)->latest()->paginate(10);
             if(auth()->user()->hasRole('admin')){
-                $users = User::where('name', 'like', '%' . $this->search_user . '%')->role('guru')->paginate(10);
+                $users = User::where('name', 'like', '%' . $this->search_user . '%')->andWhere('sekolah_id', auth()->user()->sekolah_id)->paginate(10);
             }else{
                 $users = User::where('name', 'like', '%' . $this->search_user . '%')->latest()->paginate(10);
             }

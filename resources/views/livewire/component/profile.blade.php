@@ -21,6 +21,10 @@
                             <label for="email" class="col-form-label">Email:</label>
                             <input type="text" readonly class="form-control" wire:model="email">
                         </div>
+                        <div class="form-group col-md-12">
+                            <label for="email" class="col-form-label">Sekolah:</label>
+                            <input type="text" readonly class="form-control" wire:model="sekolah_id" @if (auth()->user()->hasRole('superadmin')) placeholder="kamu adalah superadmin, tidak memiliki sekolah" @endif>
+                        </div>
                         <div class="form-group col-md-6">
                             <label for="name" class="col-form-label">Your Name:</label>
                             <input type="text" id="name" class="form-control" wire:model="name">
@@ -50,14 +54,15 @@
                             <textarea class="form-control" id="alamat" wire:model="alamat">
                             </textarea>
                         </div>
-                        <div class="form-group col-md-12">
+                        {{-- <div class="form-group col-md-12">
                             <label for="sekolah" class="col-form-label">Sekolah:</label>
                             <select wire:ignore wire:model="sekolah_id" id="sekolah" class="form-control">
                                 @foreach ($sekolah as $item)
                                     <option @if (auth()->user()->sekolah_id === $item->id) selected @endif value="{{ $item->id }}">{{ $item->nama_sekolah }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
+
                         <div class="form-group col-md-12">
                             <label for="riwayat_pendidikan" class="col-form-label">Riwayat Pendidikan:</label>
                             <textarea class="form-control" id="riwayat_pendidikan" wire:model="riwayat_pendidikan">

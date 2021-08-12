@@ -36,6 +36,20 @@
                                     </span>
                                 @enderror
                             </div>
+                            @if ($sekolah->count() > 0)
+                            <div class="mb-2 form-group first">
+                                <select class="form-control-sm" name="sekolah_id">
+                                    @foreach ($sekolah as $item)
+                                        <option class="form-control-sm" value="{{ $item->id }}">{{ $item->nama_sekolah }}</option>
+                                    @endforeach
+                                </select>
+                                @error('sekolah_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            @endif
                             <div class="mb-2 form-group last">
                                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                                 @error('password')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
@@ -21,7 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $sekolah = Sekolah::latest()->get();
+        return view('auth.register', compact('sekolah'));
     }
 
     /**
@@ -50,6 +52,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'sekolah_id' => $request->sekolah_id ?? null,
             'password' => Hash::make($request->password),
         ]);
 
