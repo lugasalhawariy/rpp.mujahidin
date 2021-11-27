@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About Project
+
+PROJECT WEB RPP ONLINE MENGGUNAKAN LARAVEL - LIVEWIRE, DENGAN BERBAGAI MACAM FITUR. FITUR UTAMA DARI PROJECT INI ADALAH (TEMPLATE RPP ONLINE) DAN (3 ROLE USER DENGAN PERMISSION YANG BERBEDA-BEDA SESUAI KEBUTUHAN).
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
